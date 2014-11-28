@@ -9,6 +9,6 @@ Follow the steps mentioned below.
 Steps to follow :
     1. Move to any folder/workspace from command prompt, using "cd DirectoryName".
     2. type "git clone https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework.git" and press enter.
-    Now you will see a message "Cloning into 'TimePickerForIonicFramework'..."
+        Now you will see a message "Cloning into 'TimePickerForIonicFramework'..."
     3. move to "TimePickerForIonicFramework" directory.
     4. use "ionic serve" command to run the application.
