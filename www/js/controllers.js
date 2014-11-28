@@ -13,9 +13,13 @@ angular.module('starter.controllers', [])
 
             var objDate = new Date(obj.epochTime * 1000);       // Epoch time in milliseconds.
 
-            $scope.time.meridian = (objDate.getUTCHours() > 11) ? "PM" : "AM";
+            $scope.time.meridian = (objDate.getUTCHours() >= 12) ? "PM" : "AM";
             $scope.time.hours = (objDate.getUTCHours() > 12) ? ((objDate.getUTCHours() - 12)) : (objDate.getUTCHours());
             $scope.time.minutes = (objDate.getUTCMinutes());
+
+            if($scope.time.hours == 0 && $scope.time.meridian == "AM") {
+                $scope.time.hours = 12;
+            }
 
             $scope.increaseHours = function () {
                 if ($scope.time.hours != 12) {
@@ -26,7 +30,7 @@ angular.module('starter.controllers', [])
             };
 
             $scope.decreaseHours = function () {
-                if ($scope.time.hours != 1) {
+                if ($scope.time.hours > 1) {
                     $scope.time.hours -= 1;
                 } else {
                     $scope.time.hours = 12;
@@ -67,15 +71,19 @@ angular.module('starter.controllers', [])
 
                             $scope.loadingContent = true;
 
-                            var totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
-                            console.log("totalSec 1",totalSec);
+                            var totalSec = 0;
+
+                            if($scope.time.hours != 12){
+                                totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
+                            }else{
+                                totalSec = $scope.time.minutes * 60;
+                            }
 
                             if ($scope.time.meridian === "AM") {
                                 totalSec += 0;
                             } else if ($scope.time.meridian === "PM") {
                                 totalSec += 43200;
                             }
-                            console.log("totalSec 2",totalSec);
                             obj.epochTime = totalSec;
 
                         }
