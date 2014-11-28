@@ -37,8 +37,15 @@
         <h5>Time Picker for Ionic Framework</h5>
         <h5>Click on the below buttons to open time picker popup and set the time.</h5>
 
-        <button ng-click="showTimePickerModal(slot,'start')" class="button button-block button-stable" ng-repeat="slot in slots">
-            Epoch time : <strong>{{slot.epochTime}}</strong> seconds
-        </button>
+        <div class="list" ng-repeat="slot in slots">
+            <div class="item">
+                <p>Epoch time {{slot.epochTime}} seconds.</p>
+                <p>And minute increment is {{slot.step}} minutes.</p>
+                <button ng-click="showTimePickerModal(slot,'start')" class="button button-block button-stable" >
+                    <strong>{{slot.epochTime}}</strong>
+                </button>
+            </div>
+        </div>
+
     </ion-content>
 </ion-view>
