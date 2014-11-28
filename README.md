@@ -1,4 +1,5 @@
 This application is built for time picker, which can be used in Ionic Framework.
+All you need to do is just pass the Epoch time to the 'ng-model' and call the function on 'ng-click'.
 
 
 Follow the steps mentioned below.
