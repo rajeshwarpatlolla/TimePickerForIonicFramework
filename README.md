@@ -33,5 +33,5 @@ All you need to do is just pass the Epoch time to the 'ng-model' and call the fu
 
 ##Screen Shots:
 
-![Home Page](https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework/tree/master/www/img/TimePicker-1.jpg "Home Page")
-![TimePicker Popup](https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework/tree/master/www/img/TimePicker-1.jpg "Time picker popup.")
+![Home Page](www/img/TimePicker-1.jpg "Home Page")
+![TimePicker Popup](www/img/TimePicker-2.jpg "Time picker popup.")
