@@ -29,3 +29,9 @@ All you need to do is just pass the Epoch time to the 'ng-model' and call the fu
 4) use the following command to run the application.
 
 	> ionic serve
+
+
+##Screen Shots:
+
+![Home Page](www/img/TimePicker-1.jpg "Home Page")
+![TimePicker Popup](www/img/TimePicker-2.jpg "Time picker popup.")
