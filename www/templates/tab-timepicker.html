@@ -39,10 +39,10 @@
 
         <div class="list" ng-repeat="slot in slots">
             <div class="item">
-                <p>Epoch time {{slot.epochTime}} seconds.</p>
-                <p>And minute increment is {{slot.step}} minutes.</p>
-                <button ng-click="showTimePickerModal(slot,'start')" class="button button-block button-stable" >
-                    {{slot.epochTime}}
+                <p class="overflowShow">Epoch time <strong>{{slot.epochTime}}</strong> seconds.</p>
+                <p class="overflowShow">And minute increment is <strong>{{slot.step}}</strong> minutes.</p>
+                <button ng-click="showTimePickerModal(slot,'start')" class="button button-block button-stable overflowShow" >
+                    <standard-time etime='slot.epochTime'></standard-time>
                 </button>
             </div>
         </div>
