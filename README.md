@@ -31,7 +31,19 @@ All you need to do is just pass the Epoch time to the 'ng-model' and call the fu
 	> ionic serve
 
 
+##Versions:
+
+### 1) v0.1.0
+12 hour time picker has been added.
+
+### 2) v0.2.0
+12 hour time picker functionality modified.
+
+### 3) v0.3.0
+24 hour time picker has been added.
+
 ##Screen Shots:
 
-![Home Page](www/img/TimePicker-1.jpg "Home Page")
-![TimePicker Popup](www/img/TimePicker-2.jpg "Time picker popup.")
+![12-Hour](www/img/TimePicker-1.jpg "12-Hour")
+![24-Hour](www/img/TimePicker-2.jpg "24-Hour.")
+
