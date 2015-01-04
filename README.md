@@ -42,6 +42,9 @@ All you need to do is just pass the Epoch time to the 'ng-model' and call the fu
 ### 3) v0.3.0
 24 hour time picker has been added.
 
+### 4) v1.0.0
+The whole time picker functionality has been converted into a directive.
+
 ##Screen Shots:
 
 ![12-Hour](www/img/TimePicker-1.jpg "12-Hour")

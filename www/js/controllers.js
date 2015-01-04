@@ -7,7 +7,7 @@ angular.module('starter.controllers', [])
             {epochTime: 54900, step: 1, format: 24}
         ];
 
-        $scope.showTimePickerModal = function (obj, str) {
+        $scope.showTimePickerModal = function (obj) {
 
             $scope.time = { hours: 0, minutes: 0, meridian: "" };
 
