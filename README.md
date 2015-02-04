@@ -50,6 +50,6 @@ The whole time picker functionality has been converted into a directive.
 
 ##Screen Shots:
 
-![12-Hour](www/img/TimePicker-1.jpg "12-Hour")
-![24-Hour](www/img/TimePicker-2.jpg "24-Hour.")
+![12-Hour](https://lh6.googleusercontent.com/-UL18wuskI_A/VNHkGj8tdwI/AAAAAAAADdU/5tBbZcF6_es/w328-h494-no/TimePicker-1.jpg "12-Hour")
+![24-Hour](https://lh5.googleusercontent.com/-xgqgH2zRSuA/VNHkGQ6R8cI/AAAAAAAADdQ/5gGJ1nUqmA0/w328-h494-no/TimePicker-2.jpg "24-Hour.")
 
