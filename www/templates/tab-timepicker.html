@@ -1,59 +1,3 @@
-<script id="my-time-picker-12-hour.tpl.html" type="text/ng-template" class="">
-    <div class="12HourTimePickerChildDiv">
-        <div class="row">
-            <span class="button-small col-25">
-                <button class="button button-clear button-small button-dark timePickerArrows marginBottom10"
-                        ng-click="increaseHours()">
-                    <i class="icon ion-chevron-up"></i></button>
-                <input type="text" placeholder="" ng-model="time.hours" class="ipBoxes timePickerBoxText" disabled>
-                <button class="button button-clear button-small button-dark timePickerArrows marginTop10"
-                        ng-click="decreaseHours()">
-                    <i class="icon ion-chevron-down"></i></button>
-            </span>
-            <label class="col-10 timePickerColon"> : </label>
-            <span class="button-small col-25">
-                <button class="button button-clear button-small button-dark timePickerArrows marginBottom10"
-                        ng-click="increaseMinutes()"><i class="icon ion-chevron-up"></i></button>
-                <input type="text" placeholder="" ng-model="time.minutes" class="ipBoxes timePickerBoxText" disabled>
-                <button class="button button-clear button-small button-dark timePickerArrows marginTop10"
-                        ng-click="decreaseMinutes()"><i class="icon ion-chevron-down"></i></button>
-            </span>
-            <label class="col-10 timePickerColon"> : </label>
-            <span class="button-small col-25">
-                <button class="button button-clear button-small button-dark timePickerArrows marginBottom10"
-                        ng-click="changeMeridian()"><i class="icon ion-chevron-up"></i></button>
-                <input type="text" placeholder="" ng-model="time.meridian" class="ipBoxes timePickerBoxText" disabled>
-                <button class="button button-clear button-small button-dark timePickerArrows marginTop10"
-                        ng-click="changeMeridian()"><i class="icon ion-chevron-down"></i></button>
-            </span>
-        </div>
-    </div>
-</script>
-
-<script id="my-time-picker-24-hour.tpl.html" type="text/ng-template" class="">
-    <div class="24HourTimePickerChildDiv">
-        <div class="row">
-            <span class="button-small col-offset-20 col-25">
-                <button class="button button-clear button-small button-dark timePickerArrows marginBottom10"
-                        ng-click="increaseHours()">
-                    <i class="icon ion-chevron-up"></i></button>
-                <input type="text" placeholder="" ng-model="time.hours" class="ipBoxes timePickerBoxText" disabled>
-                <button class="button button-clear button-small button-dark timePickerArrows marginTop10"
-                        ng-click="decreaseHours()">
-                    <i class="icon ion-chevron-down"></i></button>
-            </span>
-            <label class="col-10 timePickerColon"> : </label>
-            <span class="button-small col-25">
-                <button class="button button-clear button-small button-dark timePickerArrows marginBottom10"
-                        ng-click="increaseMinutes()"><i class="icon ion-chevron-up"></i></button>
-                <input type="text" placeholder="" ng-model="time.minutes" class="ipBoxes timePickerBoxText" disabled>
-                <button class="button button-clear button-small button-dark timePickerArrows marginTop10"
-                        ng-click="decreaseMinutes()"><i class="icon ion-chevron-down"></i></button>
-            </span>
-        </div>
-    </div>
-</script>
-
 <ion-view title="Time Picker">
     <ion-content class="padding">
         <h3>TIME PICKER</h3>
@@ -64,21 +8,31 @@
         <div class="list">
             <div class="item">
                 <p><strong>12-Hour Format</strong></p>
+
                 <p class="overflowShow">Epoch time <strong>{{slots[0].epochTime}}</strong> seconds.</p>
+
                 <p class="overflowShow">Minute increment is <strong>{{slots[0].step}}</strong> minutes.</p>
-                <button ng-click="showTimePickerModal(slots[0],'start')" class="button button-block button-stable overflowShow" >
-                    <!--"standard-time" is a directive to convert the epoch time to the utc time.-->
-                    <standard-time-meridian etime='slots[0].epochTime'></standard-time-meridian>
-                </button>
+
+                <ionic-time-picker etime="slots[0].epochTime" format="12" step="15">
+                    <button class="button button-block button-stable overflowShow">
+                        <standard-time-meridian etime='slots[0].epochTime'></standard-time-meridian>
+                    </button>
+                </ionic-time-picker>
+
             </div>
             <div class="item">
                 <p><strong>24-Hour Format</strong></p>
+
                 <p class="overflowShow">Epoch time <strong>{{slots[1].epochTime}}</strong> seconds.</p>
+
                 <p class="overflowShow">Minute increment is <strong>{{slots[1].step}}</strong> minute.</p>
-                <button ng-click="showTimePickerModal(slots[1],'start')" class="button button-block button-stable overflowShow" >
-                    <!--"standard-time" is a directive to convert the epoch time to the utc time.-->
-                    <standard-time-no-meridian etime='slots[1].epochTime'></standard-time-no-meridian>
-                </button>
+
+                <ionic-time-picker etime="slots[1].epochTime" format="24" step="1">
+                    <button class="button button-block button-stable overflowShow">
+                        <standard-time-no-meridian etime='slots[1].epochTime'></standard-time-no-meridian>
+                    </button>
+                </ionic-time-picker>
+
             </div>
         </div>
 
