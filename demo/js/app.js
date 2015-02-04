@@ -32,7 +32,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             .state('tab', {
                 url: "/tab",
                 abstract: true,
-                templateUrl: "demo/templates/tabs.html"
+                templateUrl: "/demo/templates/tabs.html"
             })
 
             // Each tab has its own nav history stack:
@@ -41,7 +41,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 url: '/timepicker',
                 views: {
                     'tab-timepicker': {
-                        templateUrl: 'demo/templates/tab-timepicker.html',
+                        templateUrl: '/demo/templates/tab-timepicker.html',
                         controller: 'DashCtrl'
                     }
                 }
@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 url: '/reference',
                 views: {
                     'tab-reference': {
-                        templateUrl: 'demo/templates/tab-reference.html',
+                        templateUrl: '/demo/templates/tab-reference.html',
                         controller: 'FriendsCtrl'
                     }
                 }
@@ -61,7 +61,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 url: '/contact',
                 views: {
                     'tab-contact': {
-                        templateUrl: 'demo/templates/tab-contact.html',
+                        templateUrl: '/demo/templates/tab-contact.html',
                         controller: 'AccountCtrl'
                     }
                 }
