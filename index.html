@@ -1,117 +1,132 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="Time picker : A time picker for Ionic Framework.">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/my_styles.css">
 
     <title>Time picker</title>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework">View on GitHub</a>
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+        <a id="forkme_banner" href="https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework">View on GitHub</a>
 
-          <h1 id="project_title">Time picker</h1>
-          <h2 id="project_tagline">A time picker for Ionic Framework.</h2>
+        <h1 id="project_title">Time picker</h1>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <h2 id="project_tagline">A time picker for Ionic Framework.</h2>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+        <section id="downloads">
+            <a class="zip_download_link"
+               href="https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework/zipball/master">Download this
+                project as a .zip file</a>
+            <a class="tar_download_link"
+               href="https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework/tarball/master">Download this
+                project as a tar.gz file</a>
+        </section>
+    </header>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main_content_wrap" class="outer">
+    <section id="main_content" class="inner">
         <h2>
-<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction:</h2>
+            <a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Introduction:</h2>
 
-<p>This application is built for a time picker, which can be used in Ionic Framework.
-All you need to do is just pass the Epoch time to the 'ng-model' and call the function on 'ng-click'.</p>
+        <p>This application is built for a time picker, which can be used in Ionic Framework.
+            All you need to do is just pass the Epoch time to the 'ng-model' and call the function on 'ng-click'.</p>
 
-<p><a href="http://rajeshwarpatlolla.github.io/TimePickerForIonicFramework/demo/" title="Demo">View Demo</a> </p>
+        <p><a href="http://rajeshwarpatlolla.github.io/TimePickerForIonicFramework/demo/" title="Demo">View Demo</a></p>
 
-<h2>
-<a id="follow-the-below-mentioned-steps" class="anchor" href="#follow-the-below-mentioned-steps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Follow the below mentioned steps.</h2>
+        <h2>
+            <a id="follow-the-below-mentioned-steps" class="anchor" href="#follow-the-below-mentioned-steps"
+               aria-hidden="true"><span class="octicon octicon-link"></span></a>Follow the below mentioned steps.</h2>
 
-<p>1) First, install Node.js.</p>
+        <p>1) First, install Node.js.</p>
 
-<p>2) Run the following command from command prompt.</p>
+        <p>2) Run the following command from command prompt.</p>
 
-<pre><code>&gt; npm install -g cordova ionic
-</code></pre>
+        <pre><code>&gt; npm install -g cordova ionic</code></pre>
 
-<h2>
-<a id="project-setup" class="anchor" href="#project-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Setup:</h2>
+        <h2>
+            <a id="project-setup" class="anchor" href="#project-setup" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Project Setup:</h2>
 
-<p>1) Move to any folder/workspace from command prompt, using the following command</p>
+        <p>1) Move to any folder/workspace from command prompt, using the following command</p>
 
-<pre><code>&gt; cd DirectoryName
-</code></pre>
+        <pre><code>&gt; cd DirectoryName</code></pre>
 
-<p>2) Type the following command and press enter.</p>
+        <p>2) Type the following command and press enter.</p>
 
-<pre><code>&gt; git clone https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework.git
-</code></pre>
+        <pre><code>&gt; git clone https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework.git</code></pre>
 
-<p>3) Now you will see a message "Cloning into 'TimePickerForIonicFramework'...". Move to "TimePickerForIonicFramework" directory.</p>
+        <p>3) Now you will see a message "Cloning into 'TimePickerForIonicFramework'...". Move to
+            "TimePickerForIonicFramework" directory.</p>
 
-<pre><code>&gt; cd TimePickerForIonicFramework
-</code></pre>
+        <pre><code>&gt; cd TimePickerForIonicFramework</code></pre>
 
-<p>4) use the following command to run the application.</p>
+        <p>4) use the following command to run the application.</p>
 
-<pre><code>&gt; ionic serve
-</code></pre>
+        <pre><code>&gt; ionic serve</code></pre>
 
-<h2>
-<a id="versions" class="anchor" href="#versions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Versions:</h2>
+        <h2>
+            <a id="versions" class="anchor" href="#versions" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Versions:</h2>
 
-<h3>
-<a id="1-v010" class="anchor" href="#1-v010" aria-hidden="true"><span class="octicon octicon-link"></span></a>1) v0.1.0</h3>
+        <h3>
+            <a id="1-v010" class="anchor" href="#1-v010" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>1) v0.1.0</h3>
 
-<p>12 hour time picker has been added.</p>
+        <p>12 hour time picker has been added.</p>
 
-<h3>
-<a id="2-v020" class="anchor" href="#2-v020" aria-hidden="true"><span class="octicon octicon-link"></span></a>2) v0.2.0</h3>
+        <h3>
+            <a id="2-v020" class="anchor" href="#2-v020" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>2) v0.2.0</h3>
 
-<p>12 hour time picker functionality modified.</p>
+        <p>12 hour time picker functionality modified.</p>
 
-<h3>
-<a id="3-v030" class="anchor" href="#3-v030" aria-hidden="true"><span class="octicon octicon-link"></span></a>3) v0.3.0</h3>
+        <h3>
+            <a id="3-v030" class="anchor" href="#3-v030" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>3) v0.3.0</h3>
 
-<p>24 hour time picker has been added.</p>
+        <p>24 hour time picker has been added.</p>
 
-<h3>
-<a id="4-v100" class="anchor" href="#4-v100" aria-hidden="true"><span class="octicon octicon-link"></span></a>4) v1.0.0</h3>
+        <h3>
+            <a id="4-v100" class="anchor" href="#4-v100" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>4) v1.0.0</h3>
 
-<p>The whole time picker functionality has been converted into a directive.</p>
+        <p>The whole time picker functionality has been converted into a directive.</p>
 
-<h2>
-<a id="screen-shots" class="anchor" href="#screen-shots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screen Shots:</h2>
+        <h2>
+            <a id="screen-shots" class="anchor" href="#screen-shots" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Screen Shots:</h2>
 
-<p><img src="https://lh6.googleusercontent.com/-UL18wuskI_A/VNHkGj8tdwI/AAAAAAAADdU/5tBbZcF6_es/w328-h494-no/TimePicker-1.jpg" alt="12-Hour" title="12-Hour">
-<img src="https://lh5.googleusercontent.com/-xgqgH2zRSuA/VNHkGQ6R8cI/AAAAAAAADdQ/5gGJ1nUqmA0/w328-h494-no/TimePicker-2.jpg" alt="24-Hour" title="24-Hour."></p>
-      </section>
-    </div>
+        <p>
+            <img src="https://lh6.googleusercontent.com/-UL18wuskI_A/VNHkGj8tdwI/AAAAAAAADdU/5tBbZcF6_es/w328-h494-no/TimePicker-1.jpg"
+                 alt="12-Hour" title="12-Hour" class="image250">
+            <img src="https://lh5.googleusercontent.com/-xgqgH2zRSuA/VNHkGQ6R8cI/AAAAAAAADdQ/5gGJ1nUqmA0/w328-h494-no/TimePicker-2.jpg"
+                 alt="24-Hour" title="24-Hour." class="image250"></p>
+    </section>
+</div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Time picker maintained by <a href="https://github.com/rajeshwarpatlolla">rajeshwarpatlolla</a></p>
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer">
+    <footer class="inner">
+        <p class="copyright">Time picker maintained by <a
+                href="https://github.com/rajeshwarpatlolla">rajeshwarpatlolla</a></p>
+
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+    </footer>
+</div>
 
-    
 
-  </body>
+</body>
 </html>
