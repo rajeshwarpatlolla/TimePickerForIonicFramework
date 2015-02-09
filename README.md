@@ -1,15 +1,13 @@
 ##Introduction:
 
 This application is built for time picker, which can be used in Ionic Framework.
-All you need to do is just pass the Epoch time to the 'ng-model' and call the function on 'ng-click'.
 
 [View Demo](http://rajeshwarpatlolla.github.io/TimePickerForIonicFramework/demo/ "Demo") 
 
 
-
 ##Follow the below mentioned steps.
 
-1) First, install Node.js.
+1) First, install Node.js, Bower, Grunt.
 
 2) Run the following command from command prompt.
 
@@ -35,7 +33,7 @@ All you need to do is just pass the Epoch time to the 'ng-model' and call the fu
 
 ##How to use:
 
-Use the below format in template / html file
+Use the below format in your template / html file
 
 `<ionic-time-picker etime="slots[0].epochTime" format="12" step="15">`    
     `....`    
@@ -51,8 +49,8 @@ Use the below format in template / html file
 
 ##Versions:
 
-### 1) v1.0.0
-The whole time picker functionality has been converted into a directive.
+### 1) v0.1
+The whole time picker functionality has been implemented.
 
 ##Screen Shots:
 
