@@ -33,7 +33,7 @@ This application is built for time picker, which can be used in Ionic Framework.
 
 ##How to use:
 
-Use the below format in template / html file
+Use the below format in your template / html file
 
 `<ionic-time-picker etime="slots[0].epochTime" format="12" step="15">`    
     `....`    
