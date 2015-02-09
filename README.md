@@ -1,6 +1,6 @@
 ##Introduction:
 
-This application is built for time picker, which can be used in Ionic Framework.
+This application is built for time picker, which can be with any Ionic Framework application.
 
 [View Demo](http://rajeshwarpatlolla.github.io/TimePickerForIonicFramework/demo/ "Demo") 
 
@@ -35,17 +35,17 @@ This application is built for time picker, which can be used in Ionic Framework.
 
 Use the below format in your template / html file
 
-`<ionic-time-picker etime="slots[0].epochTime" format="12" step="15">`    
+    `<ionic-time-picker etime="slots[0].epochTime" format="12" step="15">`    
     `....`    
 `</ionic-time-picker>`
 
-1) `ionic-time-picker` is the directive, to which we can pass required vales
+1) `ionic-time-picker` is the directive, to which we can pass required vales.
 
-2) `etime` takes epoch time
+2) `etime` takes epoch time.
 	
-3) `format` takes two values, 12 or 24
+3) `format` indicates 12 hour or 24 hour format. It can take two values, 12 or 24.
 
-4) `step` takes two values, 1 or 15
+4) `step` indicates minute increment. It can take two values, 1 or 15.
 
 ##Versions:
 
