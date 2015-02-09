@@ -33,19 +33,25 @@ All you need to do is just pass the Epoch time to the 'ng-model' and call the fu
 
 	> ionic serve
 
+##How to use:
+
+Use the below format in template / html file
+
+`<ionic-time-picker etime="slots[0].epochTime" format="12" step="15">`    
+    `....`    
+`</ionic-time-picker>`
+
+1) `ionic-time-picker` is the directive, to which we can pass required vales
+
+2) `etime` takes epoch time
+	
+3) `format` takes two values, 12 or 24
+
+4) `step` takes two values, 1 or 15
 
 ##Versions:
 
-### 1) v0.1.0
-12 hour time picker has been added.
-
-### 2) v0.2.0
-12 hour time picker functionality modified.
-
-### 3) v0.3.0
-24 hour time picker has been added.
-
-### 4) v1.0.0
+### 1) v1.0.0
 The whole time picker functionality has been converted into a directive.
 
 ##Screen Shots:
