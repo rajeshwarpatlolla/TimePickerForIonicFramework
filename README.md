@@ -27,7 +27,15 @@ This application is built for time picker, which can be with any Ionic Framework
 
     > cd TimePickerForIonicFramework
 
-4) use the following command to run the application.
+4) Now install npm modules
+    
+    npm install
+    
+5) Now install bower components / dependencies using
+
+    bower install
+
+6) Once all the above steps completes successfully, use the following command to run the application.
 
 	> ionic serve
 
