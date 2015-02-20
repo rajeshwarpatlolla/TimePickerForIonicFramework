@@ -33,6 +33,13 @@ This application is built for time picker, which can be with any Ionic Framework
 
 ##How to use:
 
+Use the below format in your controller
+
+    $scope.slots = [
+          {epochTime: 12600, step: 15, format: 12},
+        {epochTime: 54900, step: 1, format: 24}
+    ];
+ 
 Use the below format in your template / html file
 
     `<ionic-time-picker etime="slots[0].epochTime" format="12" step="15">`    
