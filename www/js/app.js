@@ -241,7 +241,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                         };
 
                         $ionicPopup.show({
-                            templateUrl: 'templates/time-picker-12-hour.html',
+                            templateUrl: '../templates/time-picker-12-hour.html',
                             title: '<strong>12-Hour Format</strong>',
                             subTitle: '',
                             scope: scope,
@@ -281,7 +281,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                         scope.time.minutes = (objDate.getUTCMinutes());
 
                         $ionicPopup.show({
-                            templateUrl: 'templates/time-picker-24-hour.html',
+                            templateUrl: '../templates/time-picker-24-hour.html',
                             title: '<strong>24-Hour Format</strong>',
                             subTitle: '',
                             scope: scope,
