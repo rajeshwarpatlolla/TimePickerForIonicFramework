@@ -11,29 +11,29 @@ This application is built for time picker, which can be with any Ionic Framework
 
 2) Run the following command from command prompt.
 
-    > npm install -g cordova ionic
+	> npm install -g cordova ionic
 
 ##Project Setup:
 
 1) Move to any folder/workspace from command prompt, using the following command
 
-    > cd DirectoryName
+	> cd DirectoryName
 
 2) Type the following command and press enter.
 
-	> git clone https://github.com/rajeshwarpatlolla/TimePickerForIonicFramework.git
+	> git clone git@github.com:rajeshwarpatlolla/TimePickerForIonicFramework.git
 
 3) Now you will see a message "Cloning into 'TimePickerForIonicFramework'...". Move to "TimePickerForIonicFramework" directory.
 
-    > cd TimePickerForIonicFramework
+	> cd TimePickerForIonicFramework
 
 4) Now install npm modules
     
-    npm install
+	> npm install
     
 5) Now install bower components / dependencies using
 
-    bower install
+	> bower install
 
 6) Once all the above steps completes successfully, use the following command to run the application.
 
