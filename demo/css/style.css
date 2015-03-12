@@ -21,3 +21,7 @@
 .overflowShow {
     white-space: normal !important;
 }
+
+.popup-body {
+    overflow: visible;
+}
