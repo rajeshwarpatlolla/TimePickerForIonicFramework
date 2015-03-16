@@ -53,7 +53,7 @@ $scope.slots = [
 Use the below format in your template / html file
 
 ````html
-<ionic-time-picker etime="slots[0].epochTime" format="12" step="15">    
+<ionic-time-picker etime="slots[0].epochTime" format="slots[0].format" step="slots[0].step">    
     slots[0].epochTime
 </ionic-time-picker>
 ````
