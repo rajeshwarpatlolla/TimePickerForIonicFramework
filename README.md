@@ -60,7 +60,7 @@ Use the below format in your template / html file
 
 1) `ionic-time-picker` is the directive, to which we can pass required vales.
 
-2) `etime` takes epoch time.
+2) `etime` takes epoch time, which will be converted to UTC.
 	
 3) `format` indicates 12 hour or 24 hour format. It can take two values, 12 or 24.
 
