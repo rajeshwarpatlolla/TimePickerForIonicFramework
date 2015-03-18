@@ -68,7 +68,7 @@ Use the below format in your template / html file
 
 ##Versions:
 
-### 1) v0.1
+### 1) v0.1.0
 The whole time picker functionality has been implemented.
 
 ##Screen Shots:
