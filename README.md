@@ -66,6 +66,8 @@ Use the below format in your template / html file
 
 4) `step` indicates minute increment. It can take two values, 1 or 15.
 
+You can also use any of my [directives](https://github.com/rajeshwarpatlolla/my-angularjs-directives) to convert the epoch time to string format.
+
 ##Versions:
 
 ### 1) v0.1.0
