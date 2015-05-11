@@ -46,13 +46,13 @@ $scope.slots = {epochTime: 12600, format: 12, step: 15};
 5) Then use the below format in your template / html file
 
 ````html
-<ionic-time-picker etime="slots.epochTime" format="slots.format" step="slots.step">    
-    {{slots.epochTime}}
-</ionic-time-picker>
+<ionic-timepicker etime="slots.epochTime" format="slots.format" step="slots.step">    
+	<button class="button button-block button-positive"> {{slots.epochTime}} </button>
+</ionic-timepicker>
 ````
 
 
-a) `ionic-time-picker` is the directive, to which we can pass required vales.
+a) `ionic-timepicker` is the directive, to which we can pass required vales.
 
 b) `etime` takes epoch time, which will be converted to UTC.
 	
@@ -60,16 +60,28 @@ c) `format` indicates 12 hour or 24 hour format. It can take two values, 12 or 2
 
 d) `step` indicates minute increment. It can take two values, 1 or 15.
 
+You can also use any of my [directives](https://github.com/rajeshwarpatlolla/my-angularjs-directives) to convert the epoch time to string format.
 
 Tested with `angular#1.3.6` and `ionic#1.0.0-beta.14`. 
 
  
+##Screen Shots:
+ 
+![12-Hour](https://lh6.googleusercontent.com/-UL18wuskI_A/VNHkGj8tdwI/AAAAAAAADdU/5tBbZcF6_es/w328-h494-no/TimePicker-1.jpg "12-Hour")
+![24-Hour](https://lh5.googleusercontent.com/-xgqgH2zRSuA/VNHkGQ6R8cI/AAAAAAAADdQ/5gGJ1nUqmA0/w328-h494-no/TimePicker-2.jpg "24-Hour.")
+
 ##Versions:
 
-### 1) v0.2.0
+### 1) v0.1.0
 The whole time picker functionality has been implemented, and can be installed with 
     
     bower install ionic-timepicker --save
+    
+### 2) v0.1.1
+Directive name has been modified.
+
+### 2) v0.1.2
+If the minutes and hours are less than 10, then 0 will be prepended to the value of minutes/hours.
 
 
 ##License:
@@ -83,3 +95,6 @@ github : https://github.com/rajeshwarpatlolla
 twitter : https://twitter.com/rajeshwar_9032
 
 facebook : https://www.facebook.com/rajeshwarpatlolla
+
+paypal : rajeshwar.patlolla@gmail.com
+
