@@ -1,6 +1,6 @@
 {
   "name": "ionic-timepicker",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "authors": [
     "rajeshwarpatlolla <rajeshwar.patlolla@gmail.com>"
   ],
@@ -14,7 +14,8 @@
     "ionic",
     "timepicker",
     "ionic",
-    "timepicker"
+    "timepicker",
+    "ionic-timepicker"
   ],
   "license": "MIT",
   "homepage": "https://github.com/rajeshwarpatlolla",
@@ -28,14 +29,14 @@
   "dependencies": {
     "ionic": "~0.9.27"
   },
-  "_release": "0.1.0",
+  "_release": "0.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.1.0",
-    "commit": "5b86acd60a97ecb8d7f705c3b575d7b16be6ec55"
+    "tag": "v0.1.2",
+    "commit": "eca1ce22720dcd9a88c747ae2ad6f1cea601740a"
   },
   "_source": "git://github.com/rajeshwarpatlolla/ionic-timepicker.git",
-  "_target": "~0.1.0",
+  "_target": "~0.1.2",
   "_originalSource": "ionic-timepicker",
   "_direct": true
 }
