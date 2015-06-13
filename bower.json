@@ -4,6 +4,6 @@
   "devDependencies": {},
   "dependencies": {
     "ionic": "driftyco/ionic-bower#master",
-    "ionic-timepicker": "~0.1.2"
+    "ionic-timepicker": "master"
   }
 }
