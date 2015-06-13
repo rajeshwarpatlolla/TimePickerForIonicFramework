@@ -1,5 +1,6 @@
 {
   "name": "ionic-timepicker",
+  "version": "0.2.0",
   "authors": [
     "rajeshwarpatlolla <rajeshwar.patlolla@gmail.com>"
   ],
@@ -28,14 +29,14 @@
   "dependencies": {
     "ionic": ">=0.9.27"
   },
-  "_release": "723feca889",
+  "_release": "0.2.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "723feca889808125779b810290afb2653b882e8c"
+    "type": "version",
+    "tag": "v0.2.0",
+    "commit": "8ed72eb95a45a908f26558a7f7b04da6a9b90d9e"
   },
   "_source": "git://github.com/rajeshwarpatlolla/ionic-timepicker.git",
-  "_target": "master",
+  "_target": "~0.2.0",
   "_originalSource": "ionic-timepicker",
   "_direct": true
 }
