@@ -1,27 +1,10 @@
 /* Empty. Add your own CSS if you like */
 
-.timePickerColon {
-    padding-top: 38px;
-    text-align: center;
-}
-
-.timePickerArrows {
-    padding-left: 15px;
-}
-
-.timePickerBoxText {
-    text-align: center;
-    border: 1px solid #dddddd !important;
-}
-
-.bar.bar-stable, .tabs {
-    box-shadow: 0px 0px 5px #555;
-}
-
-.overflowShow {
-    white-space: normal !important;
-}
-
 .popup-body {
     overflow: visible;
+}
+
+.contact a {
+    font-size: 14px;
+    white-space: normal;
 }
