@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
     };
 
     $scope.timePickerObject24Hour = {
-      inputEpochTime: ((new Date()).getHours() * 60 * 60),  //Optional
+      inputEpochTime: ((new Date()).getHours() * 60 * 60 + (new Date()).getMinutes() * 60),  //Optional
       step: 10,  //Optional
       format: 24,  //Optional
       titleLabel: '24-hour Format',  //Optional
