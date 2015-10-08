@@ -17,12 +17,11 @@
       },
       link: function (scope, element, attrs) {
 
-        console.log(scope.inputObj);
-
         var today = new Date();
-        var currentEpoch = today.getHours();
+        var currentEpoch = ((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60);
 
-        scope.inputEpochTime = scope.inputObj.inputEpochTime ? scope.inputObj.inputEpochTime : (currentEpoch * 60 * 60);
+        //set up base variables and options for customization
+        scope.inputEpochTime = scope.inputObj.inputEpochTime ? scope.inputObj.inputEpochTime : currentEpoch;
         scope.step = scope.inputObj.step ? scope.inputObj.step : 15;
         scope.format = scope.inputObj.format ? scope.inputObj.format : 24;
         scope.titleLabel = scope.inputObj.titleLabel ? scope.inputObj.titleLabel : 'Time Picker';
@@ -32,11 +31,10 @@
         scope.closeButtonType = scope.inputObj.closeButtonType ? scope.inputObj.closeButtonType : 'button-stable';
 
         var obj = {epochTime: scope.inputEpochTime, step: scope.step, format: scope.format};
-
         scope.time = {hours: 0, minutes: 0, meridian: ""};
-
         var objDate = new Date(obj.epochTime * 1000);       // Epoch time in milliseconds.
 
+        //Increasing the hours
         scope.increaseHours = function () {
           scope.time.hours = Number(scope.time.hours);
           if (obj.format == 12) {
@@ -47,15 +45,12 @@
             }
           }
           if (obj.format == 24) {
-            if (scope.time.hours != 23) {
-              scope.time.hours += 1;
-            } else {
-              scope.time.hours = 0;
-            }
+            scope.time.hours = (scope.time.hours + 1) % 24;
           }
           scope.time.hours = (scope.time.hours < 10) ? ('0' + scope.time.hours) : scope.time.hours;
         };
 
+        //Decreasing the hours
         scope.decreaseHours = function () {
           scope.time.hours = Number(scope.time.hours);
           if (obj.format == 12) {
@@ -66,47 +61,39 @@
             }
           }
           if (obj.format == 24) {
-            if (scope.time.hours > 0) {
-              scope.time.hours -= 1;
-            } else {
-              scope.time.hours = 23;
-            }
+            scope.time.hours = (scope.time.hours + 23) % 24;
           }
           scope.time.hours = (scope.time.hours < 10) ? ('0' + scope.time.hours) : scope.time.hours;
         };
 
+        //Increasing the minutes
         scope.increaseMinutes = function () {
           scope.time.minutes = Number(scope.time.minutes);
-
-          if (scope.time.minutes != (60 - obj.step) && (scope.time.minutes + obj.step <= 60)) {
-            scope.time.minutes += obj.step;
-          } else {
-            scope.time.minutes = 0;
-          }
+          scope.time.minutes = (scope.time.minutes + obj.step) % 60;
           scope.time.minutes = (scope.time.minutes < 10) ? ('0' + scope.time.minutes) : scope.time.minutes;
         };
 
+        //Decreasing the minutes
         scope.decreaseMinutes = function () {
           scope.time.minutes = Number(scope.time.minutes);
-          if (scope.time.minutes != 0 && (scope.time.minutes - obj.step > 0)) {
-            scope.time.minutes -= obj.step;
-          } else {
-            scope.time.minutes = 60 - obj.step;
-          }
+          scope.time.minutes = (scope.time.minutes + (60 - obj.step)) % 60;
           scope.time.minutes = (scope.time.minutes < 10) ? ('0' + scope.time.minutes) : scope.time.minutes;
         };
 
+        //Changing the meridian
         scope.changeMeridian = function () {
           scope.time.meridian = (scope.time.meridian === "AM") ? "PM" : "AM";
         };
 
+        //onclick of the button
         element.on("click", function () {
-          if (scope.inputObj.inputEpochTime) {
+          if (typeof scope.inputObj.inputEpochTime === 'undefined' || scope.inputObj.inputEpochTime === null) {
+            objDate = new Date();
+          } else {
             objDate = new Date(scope.inputObj.inputEpochTime * 1000);
           }
 
           if (obj.format == 12) {
-
             scope.time.meridian = (objDate.getUTCHours() >= 12) ? "PM" : "AM";
             scope.time.hours = (objDate.getUTCHours() > 12) ? ((objDate.getUTCHours() - 12)) : (objDate.getUTCHours());
             scope.time.minutes = (objDate.getUTCMinutes());
@@ -114,7 +101,7 @@
             scope.time.hours = (scope.time.hours < 10) ? ("0" + scope.time.hours) : (scope.time.hours);
             scope.time.minutes = (scope.time.minutes < 10) ? ("0" + scope.time.minutes) : (scope.time.minutes);
 
-            if (scope.time.hours == 0 && scope.time.meridian == "AM") {
+            if (scope.time.hours === 0 && scope.time.meridian === "AM") {
               scope.time.hours = 12;
             }
 
@@ -155,7 +142,7 @@
                   }
                 }
               ]
-            })
+            });
 
           } else if (obj.format == 24) {
 
@@ -197,7 +184,7 @@
                   }
                 }
               ]
-            })
+            });
           }
         });
       }

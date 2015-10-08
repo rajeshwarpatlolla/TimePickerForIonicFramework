@@ -3,7 +3,7 @@
   "private": "true",
   "devDependencies": {},
   "dependencies": {
-    "ionic": "driftyco/ionic-bower#master",
-    "ionic-timepicker": "~0.3.0"
+    "ionic": "~1.1.0",
+    "ionic-timepicker": "~0.4.0"
   }
 }
