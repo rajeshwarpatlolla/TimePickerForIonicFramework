@@ -20,11 +20,12 @@ angular.module('ionic-timepicker.provider', [])
       var provider = {};
 
       var $scope = $rootScope.$new();
-      $scope.today = resetHMSM(new Date()).getTime();
+      $scope.today = resetSM(new Date()).getTime();
       $scope.disabledDates = [];
+      $scope.format_12 = true;
 
       //Reset the hours, minutes, seconds and milli seconds
-      function resetHMSM(currentTime) {
+      function resetSM(currentTime) {
         currentTime.setSeconds(0);
         currentTime.setMilliseconds(0);
         return currentTime;
