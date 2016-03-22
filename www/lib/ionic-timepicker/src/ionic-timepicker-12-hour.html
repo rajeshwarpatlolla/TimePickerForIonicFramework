@@ -17,8 +17,8 @@
       <button type="button" class="button button-clear button-small button-dark timePickerArrows marginTop10"
               ng-click="decreaseMinutes()"><i class="icon ion-chevron-down"></i></button>
     </span>
-    <label class="col col-10 timePickerColon" ng-show="format_12"> : </label>
-    <span class="button-small col col-25" ng-show="format_12">
+    <label class="col col-10 timePickerColon" ng-show="format == 12"> : </label>
+    <span class="button-small col col-25" ng-show="format == 12">
       <button type="button" class="button button-clear button-small button-dark timePickerArrows marginBottom10"
               ng-click="changeMeridian()"><i class="icon ion-chevron-up"></i></button>
       <div ng-bind="time.meridian" class="ipBoxes timePickerBoxText"></div>
