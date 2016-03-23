@@ -21,3 +21,28 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+//====================================================================================
+
+.ionic_timepicker_popup {
+  .timePickerColon {
+    padding-top: 40px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .timePickerArrows {
+    width: 100%;
+  }
+
+  .timePickerBoxText {
+    height: 40px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    font-size: 16px;
+    padding-top: 5px;
+  }
+
+  .overflowShow {
+    white-space: normal !important;
+  }
+}

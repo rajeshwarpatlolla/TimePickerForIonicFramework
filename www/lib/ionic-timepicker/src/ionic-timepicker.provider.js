@@ -128,7 +128,7 @@ angular.module('ionic-timepicker.provider', [])
         $scope.popup = $ionicPopup.show({
           templateUrl: 'ionic-datepicker-popup.html',
           $scope: $scope,
-          cssClass: 'ionic_datepicker_popup',
+          cssClass: 'ionic_timepicker_popup',
           buttons: buttons
         });
 
