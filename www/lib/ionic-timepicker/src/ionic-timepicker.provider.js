@@ -18,8 +18,8 @@ angular.module('ionic-timepicker.provider', [])
     this.$get = ['$rootScope', '$ionicPopup', '$ionicModal', function ($rootScope, $ionicPopup, $ionicModal) {
 
       var provider = {};
-
       var $scope = $rootScope.$new();
+
       $scope.today = resetSM(new Date()).getTime();
       $scope.disabledDates = [];
       $scope.format = 12;
@@ -88,36 +88,34 @@ angular.module('ionic-timepicker.provider', [])
         $scope.mainObj = angular.extend({}, config, ipObj);
 
         if (typeof scope.inputObj.inputEpochTime === 'undefined' || scope.inputObj.inputEpochTime === null) {
-          objDate = new Date();
+          objTime = new Date();
         } else {
-          objDate = new Date(scope.inputObj.inputEpochTime * 1000);
+          objTime = new Date(scope.inputObj.inputEpochTime * 1000);
         }
 
-        if (!$scope.mainObj.closeOnSelect) {
-          buttons = [{
-            text: $scope.mainObj.setLabel,
-            type: 'button_set',
-            onTap: function (e) {
-              scope.loadingContent = true;
+        buttons = [{
+          text: $scope.mainObj.setLabel,
+          type: 'button_set',
+          onTap: function (e) {
+            scope.loadingContent = true;
 
-              var totalSec = 0;
+            var totalSec = 0;
 
-              if (scope.time.hours != 12) {
-                totalSec = (scope.time.hours * 60 * 60) + (scope.time.minutes * 60);
-              } else {
-                totalSec = scope.time.minutes * 60;
-              }
-
-              if (scope.time.meridian === "AM") {
-                totalSec += 0;
-              } else if (scope.time.meridian === "PM") {
-                totalSec += 43200;
-              }
-              scope.etime = totalSec;
-              scope.inputObj.callback(scope.etime);
+            if (scope.time.hours != 12) {
+              totalSec = (scope.time.hours * 60 * 60) + (scope.time.minutes * 60);
+            } else {
+              totalSec = scope.time.minutes * 60;
             }
-          }];
-        }
+
+            if (scope.time.meridian === "AM") {
+              totalSec += 0;
+            } else if (scope.time.meridian === "PM") {
+              totalSec += 43200;
+            }
+            scope.etime = totalSec;
+            scope.inputObj.callback(scope.etime);
+          }
+        }];
 
         buttons.push({
           text: $scope.mainObj.closeLabel,
