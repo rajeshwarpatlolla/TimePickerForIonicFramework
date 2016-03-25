@@ -180,10 +180,18 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
         self.scope.$parent && self.scope.$parent.$broadcast(self.viewType + '.shown', self);
         self.el.classList.add('active');
         self.scope.$broadcast('$ionicHeader.align');
+        self.scope.$broadcast('$ionicFooter.align');
       }, 20);
 
       return $timeout(function() {
         if (!self._isShown) return;
+        self.$el.on('touchmove', function(e) {
+          //Don't allow scrolling while open by dragging on backdrop
+          var isInScroll = ionic.DomUtil.getParentOrSelfWithClass(e.target, 'scroll');
+          if (!isInScroll) {
+            e.preventDefault();
+          }
+        });
         //After animating in, allow hide on backdrop click
         self.$el.on('click', function(e) {
           if (self.backdropClickToClose && e.target === self.el && stack.isHighest(self)) {

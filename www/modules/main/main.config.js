@@ -6,24 +6,24 @@ angular.module('starter')
       .state('tab', {
         url: "/tab",
         abstract: true,
-        templateUrl: "templates/tabs.html"
+        templateUrl: "modules/main/templates/tabs.html"
       })
 
       .state('tab.timepicker', {
         url: '/timepicker',
         views: {
           'tab-timepicker': {
-            templateUrl: 'templates/tab-timepicker.html',
+            templateUrl: 'modules/main/templates/tab-timepicker.html',
             controller: 'DashCtrl'
           }
         }
       })
 
-      .state('tab.reference', {
-        url: '/reference',
+      .state('tab.other-plugins', {
+        url: '/other-plugins',
         views: {
-          'tab-reference': {
-            templateUrl: 'templates/tab-reference.html'
+          'tab-other-plugins': {
+            templateUrl: 'modules/main/templates/tab-other-plugins.html'
           }
         }
       })
@@ -32,7 +32,7 @@ angular.module('starter')
         url: '/contact',
         views: {
           'tab-contact': {
-            templateUrl: 'templates/tab-contact.html'
+            templateUrl: 'modules/main/templates/tab-contact.html'
           }
         }
       });
