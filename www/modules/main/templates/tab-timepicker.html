@@ -5,20 +5,16 @@
 
       <div class="padding-vertical">
         <h5 class="text-center">12-Hour Format - 15 Mins Steps</h5>
-        <ionic-timepicker input-obj="timePickerObject12Hour">
-          <button class="button button-block button-positive overflowShow">
-            <standard-time-meridian etime='timePickerObject12Hour.inputEpochTime'></standard-time-meridian>
-          </button>
-        </ionic-timepicker>
+        <button class="button button-block button-positive overflowShow" ng-click="openTimePicker1()">
+          Open 12 hour timepicker
+        </button>
       </div>
 
       <div class="padding-vertical">
         <h5 class="text-center">24-Hour Format - 10 Mins Steps</h5>
-        <ionic-timepicker input-obj="timePickerObject24Hour">
-          <button class="button button-block button-positive overflowShow">
-            <standard-time-no-meridian etime='timePickerObject24Hour.inputEpochTime'></standard-time-no-meridian>
-          </button>
-        </ionic-timepicker>
+        <button class="button button-block button-positive overflowShow" ng-click="openTimePicker2()">
+          Open 24 hour timepicker
+        </button>
       </div>
     </div>
   </ion-content>

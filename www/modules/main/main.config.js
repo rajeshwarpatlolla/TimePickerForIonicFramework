@@ -14,7 +14,7 @@ angular.module('starter')
         views: {
           'tab-timepicker': {
             templateUrl: 'modules/main/templates/tab-timepicker.html',
-            controller: 'DashCtrl'
+            controller: 'TimepickerDemoCtrl'
           }
         }
       })
