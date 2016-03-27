@@ -8275,6 +8275,24 @@ ion-content {
 .font_28px {
   font-size: 28px; }
 
+.ionic_timepicker_popup .popup-head {
+  display: none; }
+.ionic_timepicker_popup .popup-body {
+  padding: 0; }
+.ionic_timepicker_popup .popup-buttons {
+  padding: 0;
+  min-height: 44px;
+  height: 44px; }
+  .ionic_timepicker_popup .popup-buttons .button:not(:last-child) {
+    margin-right: 1px; }
+.ionic_timepicker_popup .heading {
+  height: 44px;
+  background-color: #009688;
+  color: #ffffff;
+  text-align: center;
+  line-height: 44px;
+  font-size: 18px;
+  font-weight: bold; }
 .ionic_timepicker_popup .timePickerColon {
   padding-top: 40px;
   text-align: center;
@@ -8289,3 +8307,6 @@ ion-content {
   padding-top: 5px; }
 .ionic_timepicker_popup .overflowShow {
   white-space: normal !important; }
+.ionic_timepicker_popup .button_set, .ionic_timepicker_popup .button_close {
+  background-color: #009688;
+  color: #ffffff; }

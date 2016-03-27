@@ -1,4 +1,5 @@
 <div class="">
+  <div class="heading">{{time.hours}} : {{time.minutes}} {{time.meridian}}</div>
   <div class="row">
     <div class="button-small col col-25">
       <button type="button" class="button button-clear button-small button-dark timePickerArrows marginBottom10"
@@ -10,6 +11,7 @@
         <i class="icon ion-chevron-down"></i></button>
     </div>
     <label class="col col-10 timePickerColon"> : </label>
+
     <div class="button-small col col-25">
       <button type="button" class="button button-clear button-small button-dark timePickerArrows marginBottom10"
               ng-click="increaseMinutes()"><i class="icon ion-chevron-up"></i></button>
@@ -18,6 +20,7 @@
               ng-click="decreaseMinutes()"><i class="icon ion-chevron-down"></i></button>
     </div>
     <label class="col col-10 timePickerColon"> : </label>
+
     <div class="button-small col col-25">
       <button type="button" class="button button-clear button-small button-dark timePickerArrows marginBottom10"
               ng-click="changeMeridian()"><i class="icon ion-chevron-up"></i></button>

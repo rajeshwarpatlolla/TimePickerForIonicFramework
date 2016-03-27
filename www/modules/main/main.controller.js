@@ -7,7 +7,7 @@ angular.module('starter.controllers', [])
         callback: function (val) {
           console.log('Return value from the datepicker popup is : ' + val, new Date(val));
         },
-        inputTime: ((new Date()).getHours() * 60 * 60),
+        inputTime: 50400,
         format: 12,
         setLabel: 'Set2'
       };

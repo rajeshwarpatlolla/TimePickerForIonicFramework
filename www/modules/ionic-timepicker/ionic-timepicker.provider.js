@@ -6,7 +6,8 @@ angular.module('ionic-timepicker.provider', [])
       setLabel: 'Set',
       closeLabel: 'Close',
       inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60)),
-      format: 12
+      format: 12,
+      step: 15
     };
 
     this.configTimePicker = function (inputObj) {
@@ -18,6 +19,7 @@ angular.module('ionic-timepicker.provider', [])
       var provider = {};
       var $scope = $rootScope.$new();
       $scope.today = resetHMSM(new Date()).getTime();
+      $scope.time = {};
 
       //Reset the hours, minutes, seconds and milli seconds
       function resetHMSM(currentDate) {
@@ -32,14 +34,14 @@ angular.module('ionic-timepicker.provider', [])
       //Increasing the hours
       $scope.increaseHours = function () {
         $scope.time.hours = Number($scope.time.hours);
-        if (obj.format == 12) {
+        if ($scope.mainObj.format == 12) {
           if ($scope.time.hours != 12) {
             $scope.time.hours += 1;
           } else {
             $scope.time.hours = 1;
           }
         }
-        if (obj.format == 24) {
+        if ($scope.mainObj.format == 24) {
           $scope.time.hours = ($scope.time.hours + 1) % 24;
         }
         $scope.time.hours = ($scope.time.hours < 10) ? ('0' + $scope.time.hours) : $scope.time.hours;
@@ -48,14 +50,14 @@ angular.module('ionic-timepicker.provider', [])
       //Decreasing the hours
       $scope.decreaseHours = function () {
         $scope.time.hours = Number($scope.time.hours);
-        if (obj.format == 12) {
+        if ($scope.mainObj.format == 12) {
           if ($scope.time.hours > 1) {
             $scope.time.hours -= 1;
           } else {
             $scope.time.hours = 12;
           }
         }
-        if (obj.format == 24) {
+        if ($scope.mainObj.format == 24) {
           $scope.time.hours = ($scope.time.hours + 23) % 24;
         }
         $scope.time.hours = ($scope.time.hours < 10) ? ('0' + $scope.time.hours) : $scope.time.hours;
@@ -64,14 +66,14 @@ angular.module('ionic-timepicker.provider', [])
       //Increasing the minutes
       $scope.increaseMinutes = function () {
         $scope.time.minutes = Number($scope.time.minutes);
-        $scope.time.minutes = ($scope.time.minutes + obj.step) % 60;
+        $scope.time.minutes = ($scope.time.minutes + $scope.mainObj.step) % 60;
         $scope.time.minutes = ($scope.time.minutes < 10) ? ('0' + $scope.time.minutes) : $scope.time.minutes;
       };
 
       //Decreasing the minutes
       $scope.decreaseMinutes = function () {
         $scope.time.minutes = Number($scope.time.minutes);
-        $scope.time.minutes = ($scope.time.minutes + (60 - obj.step)) % 60;
+        $scope.time.minutes = ($scope.time.minutes + (60 - $scope.mainObj.step)) % 60;
         $scope.time.minutes = ($scope.time.minutes < 10) ? ('0' + $scope.time.minutes) : $scope.time.minutes;
       };
 
@@ -80,18 +82,37 @@ angular.module('ionic-timepicker.provider', [])
         $scope.time.meridian = ($scope.time.meridian === "AM") ? "PM" : "AM";
       };
 
+      function setMinSecs(ipTime, format) {
+        $scope.time.hours = ipTime / (60 * 60);
+        var rem = ipTime % (60 * 60);
+        if (format == 12) {
+          if ($scope.time.hours > 12) {
+            $scope.time.hours -= 12;
+            $scope.time.meridian = 'PM';
+          } else {
+            $scope.time.meridian = 'AM';
+          }
+        }
+        $scope.time.minutes = rem / 60;
+
+        if ($scope.time.hours.toString().length == 1) {
+          $scope.time.hours = '0' + $scope.time.hours;
+        }
+        if ($scope.time.minutes.toString().length == 1) {
+          $scope.time.minutes = '0' + $scope.time.minutes;
+        }
+      }
+
       provider.openDatePicker = function (ipObj) {
         var buttons = [];
-
-        console.log(ipObj);
         $scope.mainObj = angular.extend({}, config, ipObj);
-        console.log($scope.mainObj);
+        setMinSecs($scope.mainObj.inputTime, $scope.mainObj.format);
 
         buttons.push({
           text: $scope.mainObj.setLabel,
           type: 'button_set',
           onTap: function (e) {
-            console.log('ionic-datepicker popup closed.');
+            console.log($scope.time);
           }
         });
 
