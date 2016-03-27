@@ -84,6 +84,7 @@ angular.module('ionic-timepicker.provider', [])
 
       function setMinSecs(ipTime, format) {
         $scope.time.hours = ipTime / (60 * 60);
+
         var rem = ipTime % (60 * 60);
         if (format == 12) {
           if ($scope.time.hours > 12) {
@@ -95,12 +96,16 @@ angular.module('ionic-timepicker.provider', [])
         }
         $scope.time.minutes = rem / 60;
 
+        $scope.time.hours = $scope.time.hours.toFixed(0);
+        $scope.time.minutes = $scope.time.minutes.toFixed(0);
+
         if ($scope.time.hours.toString().length == 1) {
           $scope.time.hours = '0' + $scope.time.hours;
         }
         if ($scope.time.minutes.toString().length == 1) {
           $scope.time.minutes = '0' + $scope.time.minutes;
         }
+        $scope.time.format = $scope.mainObj.format;
       }
 
       provider.openDatePicker = function (ipObj) {
@@ -112,7 +117,18 @@ angular.module('ionic-timepicker.provider', [])
           text: $scope.mainObj.setLabel,
           type: 'button_set',
           onTap: function (e) {
-            console.log($scope.time);
+            var totalSec = 0;
+
+            if ($scope.time.format == 12) {
+              if ($scope.time.meridian == 'PM') {
+                $scope.time.hours = Number($scope.time.hours);
+                $scope.time.hours += 12;
+              }
+              totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
+            } else {
+              totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
+            }
+            $scope.mainObj.callback(totalSec);
           }
         });
 
