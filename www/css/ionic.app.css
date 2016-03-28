@@ -8303,7 +8303,7 @@ ion-content {
   font-weight: bold; }
 .ionic_timepicker_popup .timePickerArrows {
   width: 100%; }
-.ionic_timepicker_popup .timePickerBoxText {
+.ionic_timepicker_popup .time_picker_box_text {
   height: 40px;
   text-align: center;
   border: 1px solid #dddddd;
