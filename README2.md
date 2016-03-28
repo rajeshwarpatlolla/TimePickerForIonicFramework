@@ -113,16 +113,10 @@ The first screen shot shows the popup and the second shows the modal of this plu
 ###popup
 <img src="https://lh3.googleusercontent.com/O4DlaheQZM_s-xC85sF-AJIGmSpNFRuZFEtNClCimRDRnrk3zGEfumJrn9J75jtS5A53PMi5FiinH-S-D7nMwe4XdHbwPnWvGGuECdMA5aUPt5vB1_wMVa9kDZhf7BHJ3rxGORqIhKk5LcyOMuMj5dN5tB80KPgJ4YjQvk3P4EI8HMpP9FRhTBCfDqQzxNbl9qLFaos89YJzuwL6w30-GIFYhuHzO8I7s-kR5NZ5ocbVuhCGWqlnkcGJUUApOvll5410RBQmIUIdJg2goxDZatITYiBSpuzPFgSST1LqphZwpjnxcNYqvHNqScqyGWvLLqbpeQ5_a6JrtOSo0EtTrfh7C_lDIcg_RA9gatAo5_4WfJiTZw6tHVAXItUvr8aBIokjVebn6XXP6PUWOp1oj30_PgQ-XGe56mE2RSAYfiEWIefHixJrqwg3IEQ60JFeHUxnwWY-rptVew6s3SF2m81p1_Z3A1x-cuZrUmwHPLcDV2s7mxTQxyt7QeEWXbAd4foznBvpBeIH1n2iuAvFUG16QrMptpwxigkPi1R8kmhCWDRqMox14ZWe7-5IJuMFlAab=w382-h678-no" width="360" height="640" />
 
-#### 1) prev_btn_section
-#### 2) next_btn_section
-#### 3) select_section
-#### 4) month_select
-#### 5) year_select
-#### 6) calendar_grid
-#### 7) weeks_row
-#### 8) selected_date
-#### 9) date_col
-#### 10) today
+#### 1) time_picker_box_text
+#### 2) time_picker_colon
+#### 3) button_set
+#### 4) button_close
 
 You can use the below class to customise popup.  
 ####ionic_timepicker_popup
