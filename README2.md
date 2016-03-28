@@ -38,7 +38,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-timepicker']){
 }
 ````
 
-4) You can configure this date picker at application level in the config method using the `ionicTimePicker` provider.
+4) You can configure this time picker at application level in the config method using the `ionicTimePicker` provider.
 Your config method may look like this if you wish to setup the configuration. But this is not mandatory step.
 
 ````javascript
@@ -57,11 +57,11 @@ In the above code i am not configuring all the properties, but you can configure
  
 The properties you can configure are as follows.
 
-**a) inputTime**(Optional) : This is the date object we can pass to the component. You can give any date object to this property. Default value is `new Date()`.
+**a) inputTime**(Optional) : This is the time value in epoch, we can pass to the component. You can give any date object to this property. Default value is `(((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60))`.
 
-**b) format**(Optional) : This is the date object we can pass to the component. You can give any date object to this property. Default value is `new Date()`.
+**b) format**(Optional) : This is the time format, we can pass to the component. You can give any 12 or 24 as input value. Default value is `12`.
 
-**c) step**(Optional) : This is the date object we can pass to the component. You can give any date object to this property. Default value is `new Date()`.
+**c) step**(Optional) : This is the step value which will help in increasing and decreasing the time. You can pass any values like 10, 15, 20, 30 etc. Default value is `15`.
 
 **d) setLabel**(Optional) : The label for `Set` button. Default value is `Set`
 
@@ -88,9 +88,9 @@ The properties you can configure are as follows.
 };
 ````
 
-Apart from the config method, you can re configure all options in the controller also. If you again set any of the properties, they will be overridden by the values mentioned in the controller. This will be useful if there are multiple date pickers in the app, which has different properties.
+Apart from the config method, you can re configure all options in the controller also. If you again set any of the properties, they will be overridden by the values mentioned in the controller. This will be useful if there are multiple time pickers in the app, which has different properties.
 
-In all the above steps the only mandatory thing is the `callback` where you will get the selected date value.
+In all the above steps the only mandatory thing is the `callback` where you will get the selected time value.
 
     
 ##Screen Shots:
@@ -115,8 +115,6 @@ The first screen shot shows the popup and the second shows the modal of this plu
 
 #### 1) time_picker_box_text
 #### 2) time_picker_colon
-#### 3) button_set
-#### 4) button_close
 
 You can use the below class to customise popup.  
 ####ionic_timepicker_popup
@@ -125,9 +123,7 @@ The css class names for the buttons are as follows
 
 a) For `Set` button the class name is `button_set` 
 
-b) For `Today` button the class name is `button_today`
- 
-c) For `Close` button the class name is `button_close` 
+b) For `Close` button the class name is `button_close` 
 
 ##Versions:
 
@@ -160,7 +156,7 @@ Few additional enhancements added.
 
 ### 8) v0.5.0
 #### Features
-a) You can configure the ionic-datepicker from the config method. 
+a) You can configure the ionic-timepicker from the config method. 
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-timepicker/blob/master/LICENSE.MD "MIT")
