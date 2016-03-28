@@ -51,6 +51,9 @@ ion-content {
 }
 
 .ionic_timepicker_popup {
+  .popup {
+    background-color: #ffffff;
+  }
   .popup-head {
     display: none;
   }
@@ -65,6 +68,9 @@ ion-content {
       margin-right: 1px;
     }
   }
+  .padding_left_15px {
+    padding-left: 15px;
+  }
   .heading {
     height: 44px;
     background-color: $positive;
@@ -74,8 +80,8 @@ ion-content {
     font-size: 18px;
     font-weight: bold;
   }
-  .timePickerColon {
-    padding-top: 40px;
+  .time_picker_colon {
+    padding-top: 45px;
     text-align: center;
     font-weight: bold;
   }

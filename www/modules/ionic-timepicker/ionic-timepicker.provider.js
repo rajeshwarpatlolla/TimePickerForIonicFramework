@@ -108,7 +108,7 @@ angular.module('ionic-timepicker.provider', [])
         $scope.time.format = $scope.mainObj.format;
       }
 
-      provider.openDatePicker = function (ipObj) {
+      provider.openTimePicker = function (ipObj) {
         var buttons = [];
         $scope.mainObj = angular.extend({}, config, ipObj);
         setMinSecs($scope.mainObj.inputTime, $scope.mainObj.format);

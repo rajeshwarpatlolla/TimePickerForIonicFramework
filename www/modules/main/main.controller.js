@@ -14,9 +14,9 @@ angular.module('starter.controllers', [])
         },
         inputTime: 50400,
         format: 12,
-        setLabel: 'Set2'
+        setLabel: 'Set'
       };
-      ionicTimePicker.openDatePicker(ipObj1);
+      ionicTimePicker.openTimePicker(ipObj1);
     };
 
     $scope.openTimePicker2 = function () {
@@ -32,7 +32,7 @@ angular.module('starter.controllers', [])
         inputTime: ((new Date()).getHours() * 60 * 60 + (new Date()).getMinutes() * 60),
         format: 24
       };
-      ionicTimePicker.openDatePicker(ipObj1);
+      ionicTimePicker.openTimePicker(ipObj1);
     };
 
 
