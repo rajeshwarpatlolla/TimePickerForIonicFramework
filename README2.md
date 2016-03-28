@@ -57,7 +57,7 @@ In the above code i am not configuring all the properties, but you can configure
  
 The properties you can configure are as follows.
 
-**a) inputTime**(Optional) : This is the time value in epoch, we can pass to the component. You can give any date object to this property. Default value is `(((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60))`.
+**a) inputTime**(Optional) : This is the time value in epoch, we can pass to the component. You can give epoch values as input. Default value is `(((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60))`.
 
 **b) format**(Optional) : This is the time format, we can pass to the component. You can give any 12 or 24 as input value. Default value is `12`.
 
