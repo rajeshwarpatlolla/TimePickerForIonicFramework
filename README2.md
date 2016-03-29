@@ -2,7 +2,7 @@
 
 ##Introduction:
 
-This is an `ionic-timepicker` bower component, which can be used in any Ionic framework's application. No additional plugins required for this component.
+This is an `ionic-timepicker` bower component, which can be used in any Ionic framework's application. No additional plugins are required for this component.
 This plugin is completely open source. Please rate this plugin @ [Ionic Market](http://market.ionic.io/plugins/ionictimepicker)
 
 [View Demo](http://rajeshwarpatlolla.github.io/TimePickerForIonicFramework/demo/ "Demo")
@@ -20,7 +20,7 @@ This plugin is completely open source. Please rate this plugin @ [Ionic Market](
 
 `bower install ionic-timepicker --save`
 
-This will install the latest version of this plugin. If you wish to install any specific version(eg : 0.4.0) then
+This will install the latest version of `ionic-timepicker`. If you wish to install any specific version(eg : 0.4.0) then
  
 `bower install ionic-timepicker#0.4.0 --save`
 
@@ -72,21 +72,22 @@ The properties you can configure are as follows.
 ````javascript
 .controller('HomeCtrl', function ($scope, ionicTimePicker) {
 
-    var ipObj1 = {
-        callback: function (val) {      //Mandatory
-          if (typeof (val) === 'undefined') {
-            console.log('Time not selected');
-          } else {
-            var selectedTime = new Date(val * 1000);
-            console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
-          }
-        },
-        inputTime: 50400,   //Optional
-        format: 12,         //Optional
-        step: 15,           //Optional
-        setLabel: 'Set2'    //Optional
-      };
-      ionicTimePicker.openTimePicker(ipObj1);
+  var ipObj1 = {
+    callback: function (val) {      //Mandatory
+      if (typeof (val) === 'undefined') {
+        console.log('Time not selected');
+      } else {
+        var selectedTime = new Date(val * 1000);
+        console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+      }
+    },
+    inputTime: 50400,   //Optional
+    format: 12,         //Optional
+    step: 15,           //Optional
+    setLabel: 'Set2'    //Optional
+  };
+  
+  ionicTimePicker.openTimePicker(ipObj1);
 };
 ````
 
