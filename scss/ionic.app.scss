@@ -51,6 +51,14 @@ ion-content {
 }
 
 .ionic_timepicker_popup {
+  .margin_zero {
+    margin: 0;
+  }
+
+  .padding_zero {
+    padding: 0;
+  }
+
   .popup {
     background-color: #ffffff;
   }

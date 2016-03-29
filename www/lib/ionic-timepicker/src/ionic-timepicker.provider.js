@@ -3,45 +3,45 @@ angular.module('ionic-timepicker.provider', [])
   .provider('ionicTimePicker', function () {
 
     var config = {
-      inputEpochTime: ((new Date()).getHours() * 60 * 60),
-      step: 15,
-      format: 12,
-      titleLabel: '12-hour Format',
       setLabel: 'Set',
-      closeLabel: 'Close'
+      closeLabel: 'Close',
+      inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60)),
+      format: 12,
+      step: 15
     };
 
     this.configTimePicker = function (inputObj) {
       angular.extend(config, inputObj);
     };
 
-    this.$get = ['$rootScope', '$ionicPopup', '$ionicModal', function ($rootScope, $ionicPopup, $ionicModal) {
+    this.$get = ['$rootScope', '$ionicPopup', function ($rootScope, $ionicPopup) {
 
       var provider = {};
       var $scope = $rootScope.$new();
-
-      $scope.today = resetSM(new Date()).getTime();
-      $scope.disabledDates = [];
-      $scope.format = 12;
+      $scope.today = resetHMSM(new Date()).getTime();
+      $scope.time = {};
 
       //Reset the hours, minutes, seconds and milli seconds
-      function resetSM(currentTime) {
-        currentTime.setSeconds(0);
-        currentTime.setMilliseconds(0);
-        return currentTime;
+      function resetHMSM(currentDate) {
+        currentDate.setHours(0);
+        currentDate.setMinutes(0);
+        currentDate.setSeconds(0);
+        currentDate.setMilliseconds(0);
+        return currentDate;
       }
+
 
       //Increasing the hours
       $scope.increaseHours = function () {
         $scope.time.hours = Number($scope.time.hours);
-        if (obj.format == 12) {
+        if ($scope.mainObj.format == 12) {
           if ($scope.time.hours != 12) {
             $scope.time.hours += 1;
           } else {
             $scope.time.hours = 1;
           }
         }
-        if (obj.format == 24) {
+        if ($scope.mainObj.format == 24) {
           $scope.time.hours = ($scope.time.hours + 1) % 24;
         }
         $scope.time.hours = ($scope.time.hours < 10) ? ('0' + $scope.time.hours) : $scope.time.hours;
@@ -50,14 +50,14 @@ angular.module('ionic-timepicker.provider', [])
       //Decreasing the hours
       $scope.decreaseHours = function () {
         $scope.time.hours = Number($scope.time.hours);
-        if (obj.format == 12) {
+        if ($scope.mainObj.format == 12) {
           if ($scope.time.hours > 1) {
             $scope.time.hours -= 1;
           } else {
             $scope.time.hours = 12;
           }
         }
-        if (obj.format == 24) {
+        if ($scope.mainObj.format == 24) {
           $scope.time.hours = ($scope.time.hours + 23) % 24;
         }
         $scope.time.hours = ($scope.time.hours < 10) ? ('0' + $scope.time.hours) : $scope.time.hours;
@@ -66,14 +66,14 @@ angular.module('ionic-timepicker.provider', [])
       //Increasing the minutes
       $scope.increaseMinutes = function () {
         $scope.time.minutes = Number($scope.time.minutes);
-        $scope.time.minutes = ($scope.time.minutes + obj.step) % 60;
+        $scope.time.minutes = ($scope.time.minutes + $scope.mainObj.step) % 60;
         $scope.time.minutes = ($scope.time.minutes < 10) ? ('0' + $scope.time.minutes) : $scope.time.minutes;
       };
 
       //Decreasing the minutes
       $scope.decreaseMinutes = function () {
         $scope.time.minutes = Number($scope.time.minutes);
-        $scope.time.minutes = ($scope.time.minutes + (60 - obj.step)) % 60;
+        $scope.time.minutes = ($scope.time.minutes + (60 - $scope.mainObj.step)) % 60;
         $scope.time.minutes = ($scope.time.minutes < 10) ? ('0' + $scope.time.minutes) : $scope.time.minutes;
       };
 
@@ -82,52 +82,64 @@ angular.module('ionic-timepicker.provider', [])
         $scope.time.meridian = ($scope.time.meridian === "AM") ? "PM" : "AM";
       };
 
-      //Open datepicker popup
+      function setMinSecs(ipTime, format) {
+        $scope.time.hours = ipTime / (60 * 60);
+
+        var rem = ipTime % (60 * 60);
+        if (format == 12) {
+          if ($scope.time.hours > 12) {
+            $scope.time.hours -= 12;
+            $scope.time.meridian = 'PM';
+          } else {
+            $scope.time.meridian = 'AM';
+          }
+        }
+        $scope.time.minutes = rem / 60;
+
+        $scope.time.hours = $scope.time.hours.toFixed(0);
+        $scope.time.minutes = $scope.time.minutes.toFixed(0);
+
+        if ($scope.time.hours.toString().length == 1) {
+          $scope.time.hours = '0' + $scope.time.hours;
+        }
+        if ($scope.time.minutes.toString().length == 1) {
+          $scope.time.minutes = '0' + $scope.time.minutes;
+        }
+        $scope.time.format = $scope.mainObj.format;
+      }
+
       provider.openTimePicker = function (ipObj) {
         var buttons = [];
         $scope.mainObj = angular.extend({}, config, ipObj);
+        setMinSecs($scope.mainObj.inputTime, $scope.mainObj.format);
 
-        if (typeof scope.inputObj.inputEpochTime === 'undefined' || scope.inputObj.inputEpochTime === null) {
-          objTime = new Date();
-        } else {
-          objTime = new Date(scope.inputObj.inputEpochTime * 1000);
-        }
-
-        buttons = [{
+        buttons.push({
           text: $scope.mainObj.setLabel,
           type: 'button_set',
           onTap: function (e) {
-            scope.loadingContent = true;
-
             var totalSec = 0;
 
-            if (scope.time.hours != 12) {
-              totalSec = (scope.time.hours * 60 * 60) + (scope.time.minutes * 60);
+            if ($scope.time.format == 12) {
+              if ($scope.time.meridian == 'PM') {
+                $scope.time.hours = Number($scope.time.hours);
+                $scope.time.hours += 12;
+              }
+              totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
             } else {
-              totalSec = scope.time.minutes * 60;
+              totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
             }
-
-            if (scope.time.meridian === "AM") {
-              totalSec += 0;
-            } else if (scope.time.meridian === "PM") {
-              totalSec += 43200;
-            }
-            scope.etime = totalSec;
-            scope.inputObj.callback(scope.etime);
-          }
-        }];
-
-        buttons.push({
-          text: $scope.mainObj.closeLabel,
-          type: 'button_close',
-          onTap: function (e) {
-            console.log('ionic-datepicker popup closed.');
+            $scope.mainObj.callback(totalSec);
           }
         });
 
+        buttons.push({
+          text: $scope.mainObj.closeLabel,
+          type: 'button_close'
+        });
+
         $scope.popup = $ionicPopup.show({
-          templateUrl: 'ionic-datepicker-popup.html',
-          $scope: $scope,
+          templateUrl: 'ionic-timepicker.html',
+          scope: $scope,
           cssClass: 'ionic_timepicker_popup',
           buttons: buttons
         });
@@ -137,4 +149,5 @@ angular.module('ionic-timepicker.provider', [])
       return provider;
 
     }];
+
   });

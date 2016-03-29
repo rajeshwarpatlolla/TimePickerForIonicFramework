@@ -138,12 +138,11 @@ angular.module('ionic-timepicker.provider', [])
         });
 
         $scope.popup = $ionicPopup.show({
-          templateUrl: 'modules/ionic-timepicker/ionic-timepicker.html',
+          templateUrl: 'ionic-timepicker.html',
           scope: $scope,
           cssClass: 'ionic_timepicker_popup',
           buttons: buttons
         });
-
       };
 
       return provider;

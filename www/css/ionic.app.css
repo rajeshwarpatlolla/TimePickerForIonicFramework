@@ -8275,6 +8275,10 @@ ion-content {
 .font_28px {
   font-size: 28px; }
 
+.ionic_timepicker_popup .margin_zero {
+  margin: 0; }
+.ionic_timepicker_popup .padding_zero {
+  padding: 0; }
 .ionic_timepicker_popup .popup {
   background-color: #ffffff; }
 .ionic_timepicker_popup .popup-head {
