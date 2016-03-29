@@ -38,7 +38,7 @@ angular.module('mainModuleName', ['ionic', 'ionic-timepicker']){
 }
 ````
 
-4) You can configure this date picker at application level in the config method using the `ionicTimePicker` provider.
+4) You can configure this time picker at application level in the config method using the `ionicTimePicker` provider.
 Your config method may look like this if you wish to setup the configuration. But this is not mandatory step.
 
 ````javascript
@@ -57,17 +57,18 @@ In the above code i am not configuring all the properties, but you can configure
  
 The properties you can configure are as follows.
 
-**a) inputTime**(Optional) : This is the date object we can pass to the component. You can give any date object to this property. Default value is `new Date()`.
+**a) inputTime**(Optional) : This is the input epoch time which we can pass to the component. You can give any valid epoch time. Default value is `(((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60))`.
 
-**b) format**(Optional) : This is the date object we can pass to the component. You can give any date object to this property. Default value is `new Date()`.
+**b) format**(Optional) : This takes two values 12 or 24. If we give 12 as the value, then it will be `12` format time picker or else if you give `24` as the value, then it will be 24 hour format time picker. Default value is `12`.
 
-**c) step**(Optional) : This is the date object we can pass to the component. You can give any date object to this property. Default value is `new Date()`.
+**c) step**(Optional) : This is the value which will be used to increment/decrement the values of the minutes. You can give any value like 10/15/20/30. Default value is `15`.
 
 **d) setLabel**(Optional) : The label for `Set` button. Default value is `Set`
 
 **e) closeLabel**(Optional) : The label for `Close` button. Default value is `Close`
 
 5) Inject `ionicTimePicker` in the controller, where you wish to use this component. Then using the below method you can call the timepicker.
+
 ````javascript
 .controller('HomeCtrl', function ($scope, ionicTimePicker) {
 
@@ -80,17 +81,18 @@ The properties you can configure are as follows.
             console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
           }
         },
-        inputTime: 50400,
-        format: 12,
-        setLabel: 'Set2'
+        inputTime: 50400,   //Optional
+        format: 12,         //Optional
+        step: 15,           //Optional
+        setLabel: 'Set2'    //Optional
       };
       ionicTimePicker.openTimePicker(ipObj1);
 };
 ````
 
-Apart from the config method, you can re configure all options in the controller also. If you again set any of the properties, they will be overridden by the values mentioned in the controller. This will be useful if there are multiple date pickers in the app, which has different properties.
+Apart from the config method, you can re configure all options in the controller also. If you again set any of the properties, they will be overridden by the values mentioned in the controller. This will be useful if there are multiple time pickers in the app, which has different properties.
 
-In all the above steps the only mandatory thing is the `callback` where you will get the selected date value.
+In all the above steps, only mandatory property is the `callback` where you will get the selected time value.
 
     
 ##Screen Shots:
@@ -111,23 +113,23 @@ The first screen shot shows the popup and the second shows the modal of this plu
 ##CSS Classes:
 
 ###popup
-<img src="https://lh3.googleusercontent.com/O4DlaheQZM_s-xC85sF-AJIGmSpNFRuZFEtNClCimRDRnrk3zGEfumJrn9J75jtS5A53PMi5FiinH-S-D7nMwe4XdHbwPnWvGGuECdMA5aUPt5vB1_wMVa9kDZhf7BHJ3rxGORqIhKk5LcyOMuMj5dN5tB80KPgJ4YjQvk3P4EI8HMpP9FRhTBCfDqQzxNbl9qLFaos89YJzuwL6w30-GIFYhuHzO8I7s-kR5NZ5ocbVuhCGWqlnkcGJUUApOvll5410RBQmIUIdJg2goxDZatITYiBSpuzPFgSST1LqphZwpjnxcNYqvHNqScqyGWvLLqbpeQ5_a6JrtOSo0EtTrfh7C_lDIcg_RA9gatAo5_4WfJiTZw6tHVAXItUvr8aBIokjVebn6XXP6PUWOp1oj30_PgQ-XGe56mE2RSAYfiEWIefHixJrqwg3IEQ60JFeHUxnwWY-rptVew6s3SF2m81p1_Z3A1x-cuZrUmwHPLcDV2s7mxTQxyt7QeEWXbAd4foznBvpBeIH1n2iuAvFUG16QrMptpwxigkPi1R8kmhCWDRqMox14ZWe7-5IJuMFlAab=w382-h678-no" width="360" height="640" />
+<img src="https://lh3.googleusercontent.com/L4aOxCEmBSduhkmWfrsQmA0UU3eD6-fg1VDjy-uU_ck09bspdsz_ytleW2KrzlZCy3jbFOPS_3SBlkp72SKj2DyjHMS5Eh3YRQFxe32EBU8GmufDHSaqFgjfAvqx4eJMfXsJtdfGD9v_eL-x_7fVg2nUjvNppJ3kY0XxxcbYysTxKFfnMaF40oCGXE1Uj8Dknz_mNVdtPAJeVAgVMxsuGH-zgQWVvoD5DMIgZ0unclt8DakU6N_ZBTZsrPdDPWV6yENUkWaUPmc_YsN53Pzw_h_hg-Oi34GvDyqhIEmvANCMuv6tH9NKSCoxra9dfhtjpa8sfEPfBcG5VLNDkTdnbfeqGGkwf1wTA9aYKrul682aDu84qJAA0jFp3wQvIuToAbpjlZa14MDjBh6wccev4zLt9z8sL10OK_7--0tPq-vCNt5ZlVIoHOA5tVt-lltUP9ZC2PzJRs2GhUVz9pXGi0rSmm06-gFZzb3ycH3nAf_VPlYidb9Znq7QGnWnAvaLdfKyWMDYJVtYuIdkjlFy8SfD5vVROFuXZzW9d9IxjrxOXNQ41sWN5j37UufW0TDaAZrL=w382-h678-no" width="360" height="640" />
 
-#### 1) time_picker_box_text
-#### 2) time_picker_colon
-#### 3) button_set
-#### 4) button_close
+#### 1) heading
+#### 2) time_picker_arrows 
+#### 3) time_picker_box_text
+#### 4) time_picker_colon
+#### 5) button_set
+#### 6) button_close
 
-You can use the below class to customise popup.  
+You can use the below css class as the main class to customise popup.  
 ####ionic_timepicker_popup
 
 The css class names for the buttons are as follows
 
 a) For `Set` button the class name is `button_set` 
 
-b) For `Today` button the class name is `button_today`
- 
-c) For `Close` button the class name is `button_close` 
+b) For `Close` button the class name is `button_close` 
 
 ##Versions:
 
@@ -160,7 +162,7 @@ Few additional enhancements added.
 
 ### 8) v0.5.0
 #### Features
-a) You can configure the ionic-datepicker from the config method. 
+a) You can configure the ionic-timepicker from the config method. 
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-timepicker/blob/master/LICENSE.MD "MIT")
@@ -176,4 +178,4 @@ Facebook : https://www.facebook.com/rajeshwarpatlolla
 
 Paypal : rajeshwar.patlolla@gmail.com
 
-Comment or Rate it : http://market.ionic.io/plugins/ionicTimePicker
+Comment or Rate it : http://market.ionic.io/plugins/ionictimepicker

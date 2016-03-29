@@ -8301,14 +8301,14 @@ ion-content {
   padding-top: 45px;
   text-align: center;
   font-weight: bold; }
-.ionic_timepicker_popup .timePickerArrows {
+.ionic_timepicker_popup .time_picker_arrows {
   width: 100%; }
 .ionic_timepicker_popup .time_picker_box_text {
   height: 40px;
   text-align: center;
   border: 1px solid #dddddd;
   font-size: 16px;
-  padding-top: 5px; }
+  line-height: 38px; }
 .ionic_timepicker_popup .overflowShow {
   white-space: normal !important; }
 .ionic_timepicker_popup .button_set, .ionic_timepicker_popup .button_close {
