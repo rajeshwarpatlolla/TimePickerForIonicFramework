@@ -133,6 +133,22 @@ function($timeout, $ionicGesture, $window) {
           element: element[0],
           onDrag: function() {},
           endDrag: function() {},
+          setCanScroll: function(canScroll) {
+            var c = $element[0].querySelector('.scroll');
+
+            if (!c) {
+              return;
+            }
+
+            var content = angular.element(c.parentElement);
+            if (!content) {
+              return;
+            }
+
+            // freeze our scroll container if we have one
+            var scrollScope = content.scope();
+            scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
+          },
           getTranslateX: function() {
             return $scope.sideMenuContentTranslateX || 0;
           },
@@ -167,6 +183,24 @@ function($timeout, $ionicGesture, $window) {
             // reset incase left gets grabby
             $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
           }),
+          setMarginLeftAndRight: ionic.animationFrameThrottle(function(amountLeft, amountRight) {
+            amountLeft = amountLeft && parseInt(amountLeft, 10) || 0;
+            amountRight = amountRight && parseInt(amountRight, 10) || 0;
+
+            var amount = amountLeft + amountRight;
+
+            if (amount > 0) {
+              $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + amountLeft + 'px,0,0)';
+              $element[0].style.width = ($window.innerWidth - amount) + 'px';
+              content.offsetX = amountLeft;
+            } else {
+              $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+              $element[0].style.width = '';
+              content.offsetX = 0;
+            }
+            // reset incase left gets grabby
+            //$element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(0,0,0)';
+          }),
           enableAnimation: function() {
             $scope.animationEnabled = true;
             $element[0].classList.add('menu-animated');
@@ -182,9 +216,7 @@ function($timeout, $ionicGesture, $window) {
 
         // add gesture handlers
         var gestureOpts = { stop_browser_behavior: false };
-        if (ionic.DomUtil.getParentOrSelfWithClass($element[0], 'overflow-scroll')) {
-          gestureOpts.prevent_default_directions = ['left', 'right'];
-        }
+        gestureOpts.prevent_default_directions = ['left', 'right'];
         var contentTapGesture = $ionicGesture.on('tap', onContentTap, $element, gestureOpts);
         var dragRightGesture = $ionicGesture.on('dragright', onDragX, $element, gestureOpts);
         var dragLeftGesture = $ionicGesture.on('dragleft', onDragX, $element, gestureOpts);

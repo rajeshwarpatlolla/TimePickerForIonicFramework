@@ -71,13 +71,12 @@ function($timeout, $controller, $ionicBind, $ionicConfig) {
         element.addClass('scroll-content-false');
       }
 
-      var nativeScrolling = attr.overflowScroll === "true" || !$ionicConfig.scrolling.jsScrolling();
+      var nativeScrolling = attr.overflowScroll !== "false" && (attr.overflowScroll === "true" || !$ionicConfig.scrolling.jsScrolling());
 
       // collection-repeat requires JS scrolling
       if (nativeScrolling) {
         nativeScrolling = !element[0].querySelector('[collection-repeat]');
       }
-
       return { pre: prelink };
       function prelink($scope, $element, $attr) {
         var parentScope = $scope.$parent;
@@ -159,6 +158,8 @@ function($timeout, $controller, $ionicBind, $ionicConfig) {
             $scope: $scope,
             scrollViewOptions: scrollViewOptions
           });
+
+          $scope.scrollCtrl = scrollCtrl;
 
           $scope.$on('$destroy', function() {
             if (scrollViewOptions) {

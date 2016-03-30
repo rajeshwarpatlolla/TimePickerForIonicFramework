@@ -191,8 +191,9 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
           if (renderStart && renderEnd) {
             // CSS "auto" transitioned, not manually transitioned
             // wait a frame so the styles apply before auto transitioning
-            $timeout(onReflow, 16);
-
+            $timeout(function() {
+              ionic.requestAnimationFrame(onReflow);
+            });
           } else if (!renderEnd) {
             // just the start of a manual transition
             // but it will not render the end of the transition
@@ -257,10 +258,6 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
             $timeout.cancel(enteringEle.data(DATA_FALLBACK_TIMER));
             leavingEle && $timeout.cancel(leavingEle.data(DATA_FALLBACK_TIMER));
 
-            // emit that the views have finished transitioning
-            // each parent nav-view will update which views are active and cached
-            switcher.emit('after', enteringData, leavingData);
-
             // resolve that this one transition (there could be many w/ nested views)
             deferred && deferred.resolve(navViewCtrl);
 
@@ -268,6 +265,10 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
             // transition promises should be added to the services array of promises
             if (transitionId === transitionCounter) {
               $q.all(transitionPromises).then(ionicViewSwitcher.transitionEnd);
+
+              // emit that the views have finished transitioning
+              // each parent nav-view will update which views are active and cached
+              switcher.emit('after', enteringData, leavingData);
               switcher.cleanup(enteringData);
             }
 
@@ -275,6 +276,7 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
             $ionicNavBarDelegate._instances.forEach(function(instance) {
               instance.triggerTransitionEnd();
             });
+
 
             // remove any references that could cause memory issues
             nextTransition = nextDirection = enteringView = leavingView = enteringEle = leavingEle = null;

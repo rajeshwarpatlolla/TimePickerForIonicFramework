@@ -43,7 +43,7 @@ var POPUP_TPL =
  *
  * // Triggered on a button click, or some other target
  * $scope.showPopup = function() {
- *   $scope.data = {}
+ *   $scope.data = {};
  *
  *   // An elaborate, custom popup
  *   var myPopup = $ionicPopup.show({
@@ -67,19 +67,23 @@ var POPUP_TPL =
  *       }
  *     ]
  *   });
+ *
  *   myPopup.then(function(res) {
  *     console.log('Tapped!', res);
  *   });
+ *
  *   $timeout(function() {
  *      myPopup.close(); //close the popup after 3 seconds for some reason
  *   }, 3000);
  *  };
+ *
  *  // A confirm dialog
  *  $scope.showConfirm = function() {
  *    var confirmPopup = $ionicPopup.confirm({
  *      title: 'Consume Ice Cream',
  *      template: 'Are you sure you want to eat this ice cream?'
  *    });
+ *
  *    confirmPopup.then(function(res) {
  *      if(res) {
  *        console.log('You are sure');
@@ -95,6 +99,7 @@ var POPUP_TPL =
  *      title: 'Don\'t eat that!',
  *      template: 'It might taste good'
  *    });
+ *
  *    alertPopup.then(function(res) {
  *      console.log('Thank you for not eating my delicious ice cream cone');
  *    });
@@ -251,8 +256,10 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
      *   cssClass: '', // String, The custom CSS class name
      *   subTitle: '', // String (optional). The sub-title of the popup.
      *   template: '', // String (optional). The html template to place in the popup body.
-     *   templateUrl: '', // String (optional). The URL of an html template to place in the popup   body.
+     *   templateUrl: '', // String (optional). The URL of an html template to place in the popup body.
      *   inputType: // String (default: 'text'). The type of input to use
+     *   defaultText: // String (default: ''). The initial value placed into the input.
+     *   maxLength: // Integer (default: null). Specify a maxlength attribute for the input.
      *   inputPlaceholder: // String (default: ''). A placeholder to use for the input.
      *   cancelText: // String (default: 'Cancel'. The text of the Cancel button.
      *   cancelType: // String (default: 'button-default'). The type of the Cancel button.
@@ -296,7 +303,7 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
       subTitle: options.subTitle,
       cssClass: options.cssClass,
       $buttonTapped: function(button, event) {
-        var result = (button.onTap || noop)(event);
+        var result = (button.onTap || noop).apply(self, [event]);
         event = event.originalEvent || event; //jquery events
 
         if (!event.defaultPrevented) {
@@ -346,7 +353,7 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
     };
 
     self.remove = function() {
-      if (self.removed || !$ionicModal.stack.isHighest(self)) return;
+      if (self.removed) return;
 
       self.hide(function() {
         self.element.remove();
@@ -369,8 +376,8 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
     var showDelay = 0;
 
     if (popupStack.length > 0) {
-      popupStack[popupStack.length - 1].hide();
       showDelay = config.stackPushDelay;
+      $timeout(popupStack[popupStack.length - 1].hide, showDelay, false);
     } else {
       //Add popup-open & backdrop if this is first popup
       $ionicBody.addClass('popup-open');
@@ -403,6 +410,8 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
           popupStack.splice(index, 1);
         }
 
+        popup.remove();
+
         if (popupStack.length > 0) {
           popupStack[popupStack.length - 1].show();
         } else {
@@ -418,7 +427,6 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
           ($ionicPopup._backButtonActionDone || noop)();
         }
 
-        popup.remove();
 
         return result;
       });
@@ -463,14 +471,21 @@ function($ionicTemplateLoader, $ionicBackdrop, $q, $timeout, $rootScope, $ionicB
   function showPrompt(opts) {
     var scope = $rootScope.$new(true);
     scope.data = {};
+    scope.data.fieldtype = opts.inputType ? opts.inputType : 'text';
+    scope.data.response = opts.defaultText ? opts.defaultText : '';
+    scope.data.placeholder = opts.inputPlaceholder ? opts.inputPlaceholder : '';
+    scope.data.maxlength = opts.maxLength ? parseInt(opts.maxLength) : '';
     var text = '';
     if (opts.template && /<[a-z][\s\S]*>/i.test(opts.template) === false) {
       text = '<span>' + opts.template + '</span>';
       delete opts.template;
     }
     return showPopup(extend({
-      template: text + '<input ng-model="data.response" type="' + (opts.inputType || 'text') +
-        '" placeholder="' + (opts.inputPlaceholder || '') + '">',
+      template: text + '<input ng-model="data.response" '
+        + 'type="{{ data.fieldtype }}"'
+        + 'maxlength="{{ data.maxlength }}"'
+        + 'placeholder="{{ data.placeholder }}"'
+        + '>',
       scope: scope,
       buttons: [{
         text: opts.cancelText || 'Cancel',

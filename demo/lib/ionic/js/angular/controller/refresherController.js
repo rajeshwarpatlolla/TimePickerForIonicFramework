@@ -39,13 +39,31 @@ IonicModule
       $onPulling: '&onPulling'
     });
 
+    function handleMousedown(e) {
+      e.touches = e.touches || [{
+        screenX: e.screenX,
+        screenY: e.screenY
+      }];
+      // Mouse needs this
+      startY = Math.floor(e.touches[0].screenY);
+    }
+
+    function handleTouchstart(e) {
+      e.touches = e.touches || [{
+        screenX: e.screenX,
+        screenY: e.screenY
+      }];
+
+      startY = e.touches[0].screenY;
+    }
+
     function handleTouchend() {
+      // reset Y
+      startY = null;
       // if this wasn't an overscroll, get out immediately
       if (!canOverscroll && !isDragging) {
         return;
       }
-      // reset Y
-      startY = null;
       // the user has overscrolled but went back to native scrolling
       if (!isDragging) {
         dragOffset = 0;
@@ -69,23 +87,35 @@ IonicModule
     }
 
     function handleTouchmove(e) {
+      e.touches = e.touches || [{
+        screenX: e.screenX,
+        screenY: e.screenY
+      }];
+
+      // Force mouse events to have had a down event first
+      if (!startY && e.type == 'mousemove') {
+        return;
+      }
+
       // if multitouch or regular scroll event, get out immediately
       if (!canOverscroll || e.touches.length > 1) {
         return;
       }
       //if this is a new drag, keep track of where we start
       if (startY === null) {
-        startY = parseInt(e.touches[0].screenY, 10);
+        startY = e.touches[0].screenY;
       }
 
+      deltaY = e.touches[0].screenY - startY;
+
+      // how far have we dragged so far?
       // kitkat fix for touchcancel events http://updates.html5rocks.com/2014/05/A-More-Compatible-Smoother-Touch
-      if (ionic.Platform.isAndroid() && ionic.Platform.version() === 4.4 && scrollParent.scrollTop === 0) {
+      // Only do this if we're not on crosswalk
+      if (ionic.Platform.isAndroid() && ionic.Platform.version() === 4.4 && !ionic.Platform.isCrosswalk() && scrollParent.scrollTop === 0 && deltaY > 0) {
         isDragging = true;
         e.preventDefault();
       }
 
-      // how far have we dragged so far?
-      deltaY = parseInt(e.touches[0].screenY, 10) - startY;
 
       // if we've dragged up and back down in to native scroll territory
       if (deltaY - dragOffset <= 0 || scrollParent.scrollTop !== 0) {
@@ -96,7 +126,7 @@ IonicModule
         }
 
         if (isDragging) {
-          nativescroll(scrollParent, parseInt(deltaY - dragOffset, 10) * -1);
+          nativescroll(scrollParent, deltaY - dragOffset * -1);
         }
 
         // if we're not at overscroll 0 yet, 0 out
@@ -121,7 +151,7 @@ IonicModule
 
       isDragging = true;
       // overscroll according to the user's drag so far
-      overscroll(parseInt((deltaY - dragOffset) / 3, 10));
+      overscroll((deltaY - dragOffset) / 3);
 
       // update the icon accordingly
       if (!activated && lastOverscroll > ptrThreshold) {
@@ -217,7 +247,7 @@ IonicModule
           // fraction based on the easing method
           easedT = easeOutCubic(time);
 
-        overscroll(parseInt((easedT * (Y - from)) + from, 10));
+        overscroll(Math.floor((easedT * (Y - from)) + from));
 
         if (time < 1) {
           ionic.requestAnimationFrame(scroll);
@@ -238,6 +268,21 @@ IonicModule
     }
 
 
+    var touchStartEvent, touchMoveEvent, touchEndEvent;
+    if (window.navigator.pointerEnabled) {
+      touchStartEvent = 'pointerdown';
+      touchMoveEvent = 'pointermove';
+      touchEndEvent = 'pointerup';
+    } else if (window.navigator.msPointerEnabled) {
+      touchStartEvent = 'MSPointerDown';
+      touchMoveEvent = 'MSPointerMove';
+      touchEndEvent = 'MSPointerUp';
+    } else {
+      touchStartEvent = 'touchstart';
+      touchMoveEvent = 'touchmove';
+      touchEndEvent = 'touchend';
+    }
+
     self.init = function() {
       scrollParent = $element.parent().parent()[0];
       scrollChild = $element.parent()[0];
@@ -247,8 +292,13 @@ IonicModule
         throw new Error('Refresher must be immediate child of ion-content or ion-scroll');
       }
 
-      ionic.on('touchmove', handleTouchmove, scrollChild);
-      ionic.on('touchend', handleTouchend, scrollChild);
+
+      ionic.on(touchStartEvent, handleTouchstart, scrollChild);
+      ionic.on(touchMoveEvent, handleTouchmove, scrollChild);
+      ionic.on(touchEndEvent, handleTouchend, scrollChild);
+      ionic.on('mousedown', handleMousedown, scrollChild);
+      ionic.on('mousemove', handleTouchmove, scrollChild);
+      ionic.on('mouseup', handleTouchend, scrollChild);
       ionic.on('scroll', handleScroll, scrollParent);
 
       // cleanup when done
@@ -256,8 +306,12 @@ IonicModule
     };
 
     function destroy() {
-      ionic.off('touchmove', handleTouchmove, scrollChild);
-      ionic.off('touchend', handleTouchend, scrollChild);
+      ionic.off(touchStartEvent, handleTouchstart, scrollChild);
+      ionic.off(touchMoveEvent, handleTouchmove, scrollChild);
+      ionic.off(touchEndEvent, handleTouchend, scrollChild);
+      ionic.off('mousedown', handleMousedown, scrollChild);
+      ionic.off('mousemove', handleTouchmove, scrollChild);
+      ionic.off('mouseup', handleTouchend, scrollChild);
       ionic.off('scroll', handleScroll, scrollParent);
       scrollParent = null;
       scrollChild = null;
@@ -293,7 +347,13 @@ IonicModule
     function start() {
       // startCallback
       $element[0].classList.add('refreshing');
-      $scope.$onRefresh();
+      var q = $scope.$onRefresh();
+
+      if (q && q.then) {
+        q['finally'](function() {
+          $scope.$broadcast('scroll.refreshComplete');
+        });
+      }
     }
 
     function show() {

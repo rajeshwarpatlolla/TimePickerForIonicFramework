@@ -1,46 +1,49 @@
 [![Circle CI](https://circleci.com/gh/driftyco/ionic.svg?style=svg)](https://circleci.com/gh/driftyco/ionic)
 
+[![NPM](https://nodei.co/npm/ionic.png?stars&downloads)](https://nodei.co/npm/ionic/)
 
-[![Issues Ready](https://badge.waffle.io/driftyco/ionic.png?label=ready&title=Ready)](https://waffle.io/driftyco/ionic)
-
-The best place to start with Ionic is our [documentation page](http://ionicframework.com/docs/).
-
-Ionic currently best supports iOS 7+ and Android 4.1+.
+Looking for our [documentation?](http://ionicframework.com/docs/).
 
 # What is Ionic?
 
-Ionic is the open source HTML5 Mobile Framework for building amazing, cross-platform hybrid native apps with HTML, JavaScript, and CSS.
+[Ionic](http://ionicframework.com/) is the open source HTML5 Mobile Framework for building amazing, cross-platform hybrid native apps and mobile websites with HTML, JavaScript, and CSS. If you know how to build or design websites, you will be able to build a real mobile app with Ionic!
 
-![Ionic GUI](http://ionicframework.com/img/gui_screen.jpg)
+We built Ionic because we wanted a framework that focused on building high quality hybrid native apps and mobile web apps using open web technologies we loved. The same technology the world has been using for decades to build websites, desktop applications, and now mobile and tablet apps. We wanted this framework to be obsessive about great design and performance, and work on multiple platforms without changing a thing.
 
-We built Ionic because we wanted a framework that focused on building hybrid native apps, rather than mobile websites. We wanted this framework to be obsessive about great design and performance. A framework that left the past behind and focused on the future where mobile devices could make HTML5 feel native.
+We rejected the idea that web mobile apps had to be clunky, slow, and non-native. We believed that we could bring the best of the web together with the best of the native platforms without sacricificing the power, accessibility, and portability of the open web.
 
-It's important to realize that Ionic is not a replacement for frameworks used for building mobile web apps. There are a lot
-of great solutions that work well for websites, like [jQuery Mobile](http://jquerymobile.com/).
+Above all, we built Ionic to be the easiest way for the next generation of developers to get into mobile and start building apps that compete with the best on the app store, and do it affordably. 
 
-Ionic is also not a good solution if you need to support older generation devices. Our compatibility *starts* at iOS 6 and Android 4.1. We will never support versions earlier than those. This is a framework for the future. Learn more: [Where does the Ionic Framework fit in?](http://ionicframework.com/blog/where-does-the-ionic-framework-fit-in/)
+Today, Ionic powers over 1.5 million mobile apps and websites (and even some desktop apps!), built by small startups up to Fortune 50 companies. Ionic developers come from hundreds of countries around the world, and have helped build a community that boasts hundreds of monthly meetings, conference talks, and workshops; an incredibly active [forum](http://forum.ionicframework.com) and [Theme and Plugin Marketplace](https://market.ionic.io); and some pretty [amazing apps](http://showcase.ionicframework.com/).
 
 ## Quick Start
 
 To start using ionic, you have two options: copy over the built JS and CSS files, or
-use the `ionic` tool ([ionic-cli](https://github.com/driftyco/ionic-cli)) which can be installed through npm: _(You may need to prefix the command with `sudo` depending on your OS and setup.)_
+use the `ionic` tool ([ionic-cli](https://github.com/driftyco/ionic-cli)) which can be installed through npm (recommended): _(You may need to prefix the command with `sudo` depending on your OS and setup.)_
+
+Additionally, we have a desktop GUI tool that we recently released called [Ionic Lab](http://lab.ionic.io). If you try it, let us know what you think!
+
+To get started with the CLI flow, fire up your terminal and run:
 
 ```bash
-$ npm install -g ionic
+npm install -g ionic
 ```
 
 Then, you can start a new ionic project by running:
 
 ```bash
-$ ionic start myproject
+ionic start myproject
 ```
 
 ### Manual Start
+
+If you'd rather do everything by hand, you can grab all the files for Ionic below:
 
 - Download the latest **stable** release from:
   * The `release` folder of this repository
   * Ionic CDN: [Latest Release](http://code.ionicframework.com/)
   * Using bower: `bower install ionic`
+  * For [Meteor](https://www.meteor.com/) applications: `meteor add driftyco:ionic`
 - Download the **bleeding edge just-from-master release** from:
   * Ionic CDN: [Nightly Build](http://code.ionicframework.com/#nightly)
   * Using bower: `bower install driftyco/ionic-bower#master`
@@ -60,13 +63,13 @@ For most cases, you'll need AngularJS as well.  This is bundled in `js/angular/`
 * Follow [@ionicframework on Twitter](https://twitter.com/ionicframework)
 * Subscribe to the [Ionic Newsletter](http://ionicframework.com/subscribe/)
 * Have a question that's not a feature request or bug report? [Discuss on the Ionic Forum](http://forum.ionicframework.com/)
-* Read our [Blog](http://ionicframework.com/blog/)
+* Read our [Blog](http://blog.ionic.io/)
 * Have a feature request or find a bug? [Submit an issue](http://ionicframework.com/submit-issue/)
-
+* Join our Community Slack Group! [Ionic Worldwide](http://ionicworldwide.herokuapp.com/)
 
 ## Authors
 
-Originally created by [Adam Bradley](http://twitter.com/adamdbradley), [Ben Sperry](http://twitter.com/benjsperry), and [Max Lynch](http://twitter.com/maxlynch), Ionic has seen hundreds of great [contributors](https://github.com/driftyco/ionic/graphs/contributors) from around the world, including Ionic Team Members [Perry Govier](http://twitter.com/perrygovier), [Mike Hartington](http://twitter.com/mhartington), and [Tim Lancina](http://twitter.com/dopernicus).
+Originally created by [Adam Bradley](https://twitter.com/adamdbradley), [Ben Sperry](https://twitter.com/benjsperry), and [Max Lynch](https://twitter.com/maxlynch), Ionic has seen hundreds of great [contributors](https://github.com/driftyco/ionic/graphs/contributors) from around the world, including Ionic Team Members [Perry Govier](https://twitter.com/perrygovier), [Mike Hartington](https://twitter.com/mhartington), and [Tim Lancina](https://twitter.com/dopernicus).
 
 ## Development
 
@@ -82,11 +85,11 @@ Originally created by [Adam Bradley](http://twitter.com/adamdbradley), [Ben Sper
 
 ### Documentation
 
-* Documentation is generated into `dist/ionic-site`.  To test documentation properly, follow these steps:
-  1. Clone ionic-site into `./dist/ionic-site`
-    - `git clone git@github.com:driftyco/ionic-site dist/ionic-site`
+* Documentation is generated into `./../ionic-site`.  To test documentation properly, follow these steps:
+  1. Clone ionic-site into `./../ionic-site`
+    - `git clone git@github.com:driftyco/ionic-site ./../ionic-site`
   2. Start jekyll, telling it to rebuild whenever the site changes
-    - `cd dist/ionic-site && jekyll serve -w`
+    - `cd ./../ionic-site && jekyll serve -w`
   3. Go back to project root and build the docs
     - `gulp docs [--doc-version=(versionName|nightly)]`
   4. Open localhost:4000 and see your changes! Re-run `gulp docs` again whenever you change something, and jekyll will update the site
@@ -102,7 +105,7 @@ Originally created by [Adam Bradley](http://twitter.com/adamdbradley), [Ben Sper
 
 ### Commit Conventions
 
-* Uses these [commit conventions](http://github.com/ajoslin/conventional-changelog)
+* Uses these [commit conventions](https://github.com/ajoslin/conventional-changelog)
 
 ### Pushing New Release of Ionic
 
