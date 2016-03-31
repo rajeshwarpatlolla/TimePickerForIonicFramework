@@ -13,10 +13,14 @@ Please check the [ionic-timepicker](https://github.com/rajeshwarpatlolla/ionic-t
 
 
 ##Contact:
-gmail : rajeshwar.patlolla@gmail.com
+Gmail : rajeshwar.patlolla@gmail.com
 
-github : https://github.com/rajeshwarpatlolla
+Github : https://github.com/rajeshwarpatlolla
 
-twitter : https://twitter.com/rajeshwar_9032
+Twitter : https://twitter.com/rajeshwar_9032
 
-facebook : https://www.facebook.com/rajeshwarpatlolla
+Facebook : https://www.facebook.com/rajeshwarpatlolla
+
+Paypal : rajeshwar.patlolla@gmail.com
+
+Comment or Rate it : http://market.ionic.io/plugins/ionictimepicker
