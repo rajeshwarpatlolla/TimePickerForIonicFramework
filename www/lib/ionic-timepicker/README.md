@@ -5,6 +5,8 @@
 This is an `ionic-timepicker` bower component, which can be used in any Ionic framework's application. No additional plugins are required for this component.
 This plugin is completely open source. Please rate this plugin @ [Ionic Market](http://market.ionic.io/plugins/ionictimepicker)
 
+From version 0.5.0, this component has got so many new features and the way you should use is different from the older versions of this component. If you wish to see the documentation for the previous versions of this component, please check the [previous releases](https://github.com/rajeshwarpatlolla/ionic-timepicker/releases)
+
 [View Demo](http://rajeshwarpatlolla.github.io/TimePickerForIonicFramework/demo/ "Demo")
 
 ##Prerequisites.
@@ -155,15 +157,19 @@ Class names modified as per [this bug](https://github.com/rajeshwarpatlolla/ioni
 Features added to customize this component.
 
 ### 7) v0.4.0
-Bug fixes : [#48](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/48), [#53](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/53), [#51](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/51)
+#### Bug fixes : [#48](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/48), [#53](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/53), [#51](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/51)
 
-PR : [#54](https://github.com/rajeshwarpatlolla/ionic-timepicker/pull/54), 
+#### PR : [#54](https://github.com/rajeshwarpatlolla/ionic-timepicker/pull/54), 
 
 Few additional enhancements added. 
 
 ### 8) v0.5.0
 #### Features
 a) You can configure the ionic-timepicker from the config method. 
+
+### 9) v0.5.1
+#### BugFix : [#75](https://github.com/rajeshwarpatlolla/ionic-timepicker/issues/75)
+
 
 ##License:
 [MIT](https://github.com/rajeshwarpatlolla/ionic-timepicker/blob/master/LICENSE.MD "MIT")

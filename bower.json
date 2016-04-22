@@ -4,6 +4,6 @@
   "devDependencies": {},
   "dependencies": {
     "ionic": "^1.2.4",
-    "ionic-timepicker": "^0.5.0"
+    "ionic-timepicker": "^0.5.1"
   }
 }
