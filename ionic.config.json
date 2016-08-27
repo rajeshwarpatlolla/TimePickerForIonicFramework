@@ -1,6 +1,6 @@
 {
-  "name": "ionic-timepicker-demo",
-  "app_id": "73eb74f8",
+  "name": "ionic-timepicker",
+  "app_id": "",
   "gulpStartupTasks": [
     "sass",
     "watch"

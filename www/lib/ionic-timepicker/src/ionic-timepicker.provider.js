@@ -93,6 +93,10 @@ angular.module('ionic-timepicker.provider', [])
           } else {
             $scope.time.meridian = 'AM';
           }
+
+          if ($scope.time.hours === 0) {
+            $scope.time.hours = 12;
+          }
         }
         $scope.time.minutes = rem / 60;
 
@@ -130,6 +134,7 @@ angular.module('ionic-timepicker.provider', [])
             } else {
               totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
             }
+
             $scope.mainObj.callback(totalSec);
           }
         });
@@ -140,7 +145,7 @@ angular.module('ionic-timepicker.provider', [])
         });
 
         $scope.popup = $ionicPopup.show({
-          templateUrl: 'ionic-timepicker.html',
+          templateUrl: 'lib/ionic-timepicker/src/ionic-timepicker.html',
           scope: $scope,
           cssClass: 'ionic_timepicker_popup',
           buttons: buttons
