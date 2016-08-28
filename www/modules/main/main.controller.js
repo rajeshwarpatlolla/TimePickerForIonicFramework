@@ -29,8 +29,7 @@ angular.module('starter.controllers', [])
             console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
           }
         },
-        //inputTime: ((new Date()).getHours() * 60 * 60 + (new Date()).getMinutes() * 60),
-        inputTime: 0,
+        inputTime: ((8 * 60 * 60 )+ (30 * 60)),
         format: 24
       };
       ionicTimePicker.openTimePicker(ipObj1);
