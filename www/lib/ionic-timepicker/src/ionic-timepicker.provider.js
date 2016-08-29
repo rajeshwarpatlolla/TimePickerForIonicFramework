@@ -93,10 +93,10 @@ angular.module('ionic-timepicker.provider', [])
           } else {
             $scope.time.meridian = 'AM';
           }
+        }
 
-          if ($scope.time.hours === 0) {
-            $scope.time.hours = 12;
-          }
+        if ($scope.time.hours === 0) {
+          $scope.time.hours = 12;
         }
 
         $scope.time.minutes = rem / 60;
@@ -135,7 +135,6 @@ angular.module('ionic-timepicker.provider', [])
             } else {
               totalSec = ($scope.time.hours * 60 * 60) + ($scope.time.minutes * 60);
             }
-
             $scope.mainObj.callback(totalSec);
           }
         });
