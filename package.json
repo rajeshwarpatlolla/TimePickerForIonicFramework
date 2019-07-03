@@ -7,7 +7,8 @@
     "gulp-sass": "^2.0.4",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",
-    "gulp-rename": "^1.2.0"
+    "gulp-rename": "^1.2.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "bower": "^1.3.3",
@@ -29,5 +30,10 @@
       "version": "",
       "locator": "ios"
     }
-  ]
+  ],
+  "scripts": {
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true
 }
